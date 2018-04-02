@@ -1,0 +1,295 @@
+@import "variables";
+/*==========  Desktop First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+.navbar-header{
+  float: none;
+}
+.navbar-header button{
+  margin: 5px 0;
+  background-color: $color-green;
+  border: 1px solid #000 !important;
+}
+.navbar-left,.navbar-right {
+  float: none !important;
+}
+.navbar-toggle {
+  display: block;
+}
+.navbar-collapse {
+  border-top: none;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+  background-color:rgba(0,0,0,.7);
+}
+.navbar-collapse.in {
+  overflow-y: hidden;
+}
+.navbar-fixed-top {
+  top: 0;
+  border-width: 0 0 1px;
+}
+.navbar-collapse.collapse {
+  display: none !important;
+}
+.navbar-nav {
+  float: none!important;
+  margin-top: 7.5px;
+}
+.navbar-nav>li {
+  float: none;
+}
+.navbar-nav>li>a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.collapse.in{
+  display:block !important;
+}
+.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.logo-in-menu{
+  margin-top: -6px;
+}
+.artiste-popul-one img {
+  text-align: center;
+  margin: 0 auto;
+  outline: none;
+  height: 200px;
+  width: 200px;
+  border: 2px solid #000;
+}
+.navbar-default .navbar-nav > li > a{
+  text-align: center;
+  border: none;
+}
+.slick-next {
+  position: absolute;
+  right: -2px;
+  top: 33%;
+}
+.slick-prev {
+  position: absolute;
+  left: -0px;
+  top: 33%;
+}
+.artiste-popul-one span {
+  width: 200px;
+}
+  .last-interview .one-last-interview h4,
+  .last-article .one-last-article h4{
+    height: 35px
+  }
+  .fixed .navbar-brand img {
+    max-height: 30px;
+    max-width: 100px;
+  }
+  .fixed .logo-in-menu{
+    margin-top: 0;
+  }
+  .modal-login,
+  .modal-forgot,
+  .modal-register {
+    top: 60px;
+    z-index: 99999;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+  .wrapper{
+    height: 50px;
+  }
+  .navbar-default{
+    margin: 3px;
+    padding: 0;
+    font-size: 14px;
+  }
+  .navbar-brand img {
+    max-height: 30px;
+    max-width: 100px;
+  }
+  .logo-in-menu{
+    margin: 0;
+  }
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+  .last-text a{
+    font-size: 16px;
+  }
+  footer .footer-social-icon img{
+    height: 24px;
+    width: 24px;
+    margin-left: 10px;
+    padding: 3px;
+  }
+  .modal-footer .btn + .btn{
+    margin: 2px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .artists-list .col-xs-6 {
+    width: 100% !important;
+  }
+  .breadcrumb li{
+    font-size: 11px !important;
+  }
+  .breadcrumb li a{
+    font-size: 11px !important;
+  }
+  .artists-list .sort-block {
+    font-size: 11px !important;
+    padding: 7px !important;
+  }
+}
+
+@media only screen and (max-width : 510px) {
+  .popul-block h2 {
+    font-size: 20px;
+    padding: 12px;
+  }
+  .popul-block h3 {
+    font-size: 18px;
+    padding: 15px;
+  }
+  .last-text a {
+    padding: 9px 5px;
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .last-text a .view{
+    margin: 0px 5px ;
+    font-size: 11px;
+  }
+  .center-text h1{
+    font-size: 20px;
+  }
+  .center-text p{
+    font-size: 15px;
+  }
+  footer ul li{
+    font-size: 13px;
+  }
+  .artists-list .sort-block {
+    float: left !important;
+    text-align: center !important;
+    padding: 10px 5px !important;
+    margin: 0 !important;
+    clear: both;
+  }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+.navbar-brand img {
+  max-height: 24px;
+  max-width: 80px;
+}
+.navbar-header button{
+  margin: 5px 0;
+  float: right;
+
+  position: absolute;
+  right: 10px;
+  top: 4px;
+  background-color: $color-green;
+  border: 1px solid #000 !important;
+}
+
+.last-news {
+  text-align: center;
+}
+.last-news img{
+  float: none;
+  margin: 0;
+  padding: 0;
+}
+.last-news .short-text {
+  margin: 0;
+  padding: 10px 5px;
+}
+  footer ul li{
+    font-size: 11px;
+  }
+  footer h5 {
+    font-size: 12px;
+  }
+  .modal-content {
+    max-height: 450px;
+    overflow: scroll;
+  }
+  .modal-footer button {
+    font-size: 13px;
+    clear: both;
+    padding: 6px 4px;
+    margin: 2px;
+  }
+  .artists-list h1 {
+    font-size: 25px;
+  }
+  .artists-list .sort-block .sort-item {
+    display: inline-block;
+    margin: 3px;
+  }
+}
+@media only screen and (max-width : 380px) {
+  .detail-other{
+    font-size: 10px !important;
+  }
+  .artists-list .detail-other{
+    font-size: 14px !important;
+  }
+  .last-news img.one-last-news-img {
+    text-align: center;
+    float: none;
+  }
+
+}
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px) {
+  .detail-other{
+    font-size: 9px !important;
+  }
+}
+
+
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 952px) {
+  .center-text p{
+    padding: 10px;
+    text-align: center;
+    height: 180px;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+  .modal{
+    left: 15px;
+  }
+}

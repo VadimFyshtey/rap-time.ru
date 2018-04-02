@@ -1,0 +1,220 @@
+/*==========  Desktop First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+
+@media only screen and (max-width: 1200px) {
+  .navbar-header {
+    float: none;
+  }
+
+  .navbar-header button {
+    margin: 5px 0;
+    background-color: #1b6450;
+    border: 1px solid #000 !important;
+  }
+
+  .navbar-left,
+  .navbar-right {
+    float: none !important;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+
+  .navbar-collapse {
+    border-top: none;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .navbar-collapse.in {
+    overflow-y: hidden;
+  }
+
+  .navbar-fixed-top {
+    top: 0;
+    border-width: 0 0 1px;
+  }
+
+  .navbar-collapse.collapse {
+    display: none !important;
+  }
+
+  .navbar-nav {
+    float: none !important;
+    margin-top: 7.5px;
+  }
+
+  .navbar-nav > li {
+    float: none;
+  }
+
+  .navbar-nav > li > a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .collapse.in {
+    display: block !important;
+  }
+
+  .container-fluid > .navbar-collapse,
+  .container-fluid > .navbar-header,
+  .container > .navbar-collapse,
+  .container > .navbar-header {
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+
+  .logo-in-menu {
+    margin-top: -6px;
+  }
+
+  .artiste-popul-one img {
+    text-align: center;
+    margin: 0 auto;
+    outline: none;
+    height: 200px;
+    width: 200px;
+    border: 2px solid #000;
+  }
+
+  .navbar-default .navbar-nav > li > a {
+    text-align: center;
+    border: none;
+  }
+
+  .slick-next {
+    position: absolute;
+    right: -2px;
+    top: 33%;
+  }
+
+  .slick-prev {
+    position: absolute;
+    left: -0px;
+    top: 33%;
+  }
+
+  .artiste-popul-one span {
+    width: 200px;
+  }
+
+  .last-interview .one-last-interview h4,
+  .last-article .one-last-article h4 {
+    height: 35px;
+  }
+}
+
+/* Medium Devices, Desktops */
+
+@media only screen and (max-width: 992px) {
+  .wrapper {
+    height: 50px;
+  }
+
+  .navbar-default {
+    margin: 3px;
+    padding: 0;
+  }
+
+  .navbar-brand img {
+    max-height: 30px;
+    max-width: 100px;
+  }
+
+  .logo_in_menu {
+    margin: 0;
+  }
+}
+
+/* Small Devices, Tablets */
+
+@media only screen and (max-width: 768px) {
+  .last-text a {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 510px) {
+  .last-text a {
+    padding: 9px 5px;
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .last-text a .view {
+    margin: 0px 5px;
+    font-size: 11px;
+  }
+}
+
+/* Extra Small Devices, Phones */
+
+@media only screen and (max-width: 480px) {
+  .navbar-brand img {
+    max-height: 24px;
+    max-width: 80px;
+  }
+
+  .navbar-header button {
+    margin: 5px 0;
+    float: right;
+    position: absolute;
+    right: 10px;
+    top: 4px;
+    background-color: #1b6450;
+    border: 1px solid #000 !important;
+  }
+
+  .last-news {
+    text-align: center;
+  }
+
+  .last-news img {
+    float: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .last-news .short-text {
+    margin: 0;
+    padding: 10px 5px;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .detail-other {
+    font-size: 10px !important;
+  }
+
+  .last-news img.one-last-news-img {
+    text-align: center;
+    float: none;
+  }
+}
+
+/* Custom, iPhone Retina */
+
+@media only screen and (max-width: 320px) {
+  .detail-other {
+    font-size: 9px !important;
+  }
+}
+
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+
+/* Extra Small Devices, Phones */
+
+/* Small Devices, Tablets */
+
+/* Medium Devices, Desktops */
+
+/* Large Devices, Wide Screens */
+

@@ -1,0 +1,119 @@
+.artists-list
+
+  h1
+    margin-bottom: 30px
+
+  .sort-block
+    font-weight: bold
+    font-size: 14px
+    text-shadow: none
+    padding: 4px
+    margin-left: 20px
+    .sort-item
+      padding: 5px
+      background-color: $color-green
+      cursor: pointer
+      &:hover
+        background-color: $color-green-second
+
+  .artist-one
+    text-align: center
+    margin: 0 0 0 3px
+    padding: 2px
+    height: 255px
+    border-radius: 2px
+
+    img
+      height: 250px
+      width: 250px
+      border: 2px solid $color-green
+      transition: all ease 0.3s
+      border-radius: 2px
+      &:hover
+        -webkit-box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.75)
+        -moz-box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.75)
+        box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.75)
+        transition: all ease 0.3s
+        border: 2px solid $color-green
+
+  .artist-one div
+    position: relative
+    bottom: 60px
+    display: inline-block
+    background-color: rgba(0,0,0,.5)
+    height: 60px
+    padding: 6px
+    width: 250px
+    transition: all ease 0.2s
+    font-weight: bold
+
+  .artist-one a
+    display: inline-block
+    font-weight: bold
+    color: #ffffff
+    outline: none
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
+
+  .artist-one a:hover
+    transition: all ease 0.2s
+    color: $color-green
+
+  .detail-other-info
+    i
+      font-size: 12px !important
+      opacity: 0.9
+
+  .detail-other
+    color: #000000
+    text-shadow: none
+    font-size: 16px
+    margin: 0 12px 0 12px
+    padding: 0
+    text-align: left
+
+    i
+      font-weight: bold
+      font-size: 13px
+
+    button
+      outline: none
+      padding: 3px 7px
+      margin: -5px 0 0 0
+      transition: all ease 0.5s
+      &:hover
+        background-color: $color-green
+        border: 1px solid $color-silver
+        transition: all ease 0.5s
+        color: #ffffff
+
+  .artists-sidebar
+    background-color: rgba(0,0,0,.3)
+    height: 100%
+    margin: 3px 0 15px 1px
+    text-align: center
+    border-radius: 2px
+
+    a
+      font-weight: bold
+      font-size: 15px
+      &:hover
+        color: $color-green
+
+    h3
+      font-size: 16px
+      font-weight: bold
+      padding: 10px 5px
+      background-color: rgba(0,0,0,.7)
+      margin: 0
+      text-align: center
+      border-radius: 2px
+
+  .detail-other-like
+    padding: 13px 2px
+
+  .col-lg-4
+    height: 290px
+
+  .col-lg-9
+    padding: 0 !important
+    margin: 0 !important

@@ -1,0 +1,53 @@
+.slick-slide
+  outline: none
+  max-height: 320px
+
+.slick-next
+  position: absolute
+  right: -30px
+  top: 38%
+
+.slick-prev
+  position: absolute
+  left: -30px
+  top: 38%
+
+.slick-next-album
+  cursor: pointer
+  position: absolute
+  right: -8px
+  top: 39%
+  z-index: 999
+  opacity: 0.6
+
+.slick-prev-album
+  cursor: pointer
+  position: absolute
+  left: -5px
+  top: 39%
+  z-index: 999
+  opacity: 0.6
+
+.slick-prev,
+.slick-next
+  opacity: 0.6
+  display: inline-block
+  color: #777674
+  font-weight: bold
+  text-decoration: none
+  text-shadow: rgba(255,255,255,.5) 1px 1px, rgba(100,100,100,.3) 3px 7px 3px
+  user-select: none
+  padding: 5px 10px
+  border-radius: 3px / 100%
+  background-repeat: no-repeat
+  background-size: 200% 100%, auto, 100% 2px, 100% 2px, 100% 1px, 100% 1px
+  background-position: 200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px)
+  box-shadow: rgba(0,0,0,.5) 3px 10px 10px -10px
+  z-index: 9999
+  outline: none
+
+.slick-prev:hover,
+.slick-next:hover
+  transition: .5s linear
+  opacity: 1
+  background-position: -200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px)
