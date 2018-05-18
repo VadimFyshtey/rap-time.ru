@@ -14,38 +14,42 @@
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-7 pull-right">
             <ul>
                 <h5>О ПРОЕКТЕ</h5>
-                <a href="#" rel="nofollow"><li>Информация о проекте</li></a>
-                <a href="#" rel="nofollow"><li>Контакты</li></a>
-                <a href="#" rel="nofollow"><li>Размещение рекламы</li></a>
-                <a href="#" rel="nofollow"><li>Правообладателям</li></a>
+                <a href="{{ route('info') }}" rel="nofollow"><li>Информация о проекте</li></a>
+                <a href="{{ route('contactPage') }}" rel="nofollow"><li>Контакты</li></a>
+                <a href="{{ route('advertising') }}" rel="nofollow"><li>Размещение рекламы</li></a>
+                <a href="{{ route('copyright') }}" rel="nofollow"><li>Правообладателям</li></a>
             </ul>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-5 pull-right footer-auth-block">
             <ul>
                 <h5>ПОЛЬЗОВАТЕЛЬ</h5>
                 @if(!Illuminate\Support\Facades\Auth::check())
-                    <a href="{{ route('register') }}" data-toggle="modal" data-target="#modal-register" rel="nofollow"><li>Регистрация</li></a>
-                    <a href="{{ route('login') }}" data-toggle="modal" data-target="#modal-login" rel="nofollow"><li>Вход</li></a>
+                    <a href="{{ route('register') }}" data-toggle="modal" data-target="#modal-register" rel="nofollow">
+                        <li>Регистрация</li>
+                    </a>
+                    <a href="{{ route('login') }}" data-toggle="modal" data-target="#modal-login" rel="nofollow">
+                        <li>Вход</li>
+                    </a>
                 @else
-                    <a href="#"><li>Мой аккаунт</li></a>
+                    <a href="{{ route('profileIndex', ['id' => Auth::id()]) }}">
+                        <li>Мой аккаунт</li>
+                    </a>
                 @endif
-                <a href="#" rel="nofollow"><li>Обратная связь</li></a>
+                <a data-toggle="modal" data-target="#modal-contact" rel="nofollow">
+                    <li>Обратная связь</li>
+                </a>
             </ul>
         </div>
         <div class="footer-social-icon col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <a class="pull-left animate-social-icon" href="https://t.me/rap_american" target="_blank" rel="nofollow"><img src="/img/telegram.png" alt=""></a>
-            <a class="pull-left animate-social-icon" href="https://www.youtube.com/channel/UCJ86fLVg90qjqbZmnt0uyYw" target="_blank" rel="nofollow"><img src="/img/youtube.png" alt=""></a>
-            <a class="pull-left animate-social-icon" href="https://vk.com/vadim_xd" target="_blank" rel="nofollow"><img src="/img/vk.png" alt=""></a>
-            <a class="pull-left animate-social-icon" href="https://vk.com/vadim_xd" target="_blank" rel="nofollow"><img src="/img/facebook.png" alt=""></a>
+            <a class="pull-left animate-social-icon" href="{{ env('TELEGRAM_LINK') }}" target="_blank" rel="nofollow"><img src="{{ asset('img/social/telegram.png') }}" alt="Rap-Time" title="Rap-Time" /></a>
+            <a class="pull-left animate-social-icon" href="{{ env('YOUTUBE_LINK') }}" target="_blank" rel="nofollow"><img src="{{ asset('img/social/youtube.png') }}" alt="Rap-Time" title="Rap-Time" /></a>
+            <a class="pull-left animate-social-icon" href="{{ env('VKONTAKTE_LINK') }}" target="_blank" rel="nofollow"><img src="{{ asset('img/social/vk.png') }}" alt="Rap-Time" title="Rap-Time" /></a>
+            <a class="pull-left animate-social-icon" href="{{ env('FACEBOOK_LINK') }}" target="_blank" rel="nofollow"><img src="{{ asset('img/social/facebook.png') }}" alt="Rap-Time" title="Rap-Time" /></a>
         </div>
     </div>
     <section class="bottom-footer">
-        <p>2018 - {{ date('Y') }} <a href="/">rap-time.ru</a> by <a href="#" rel="nofollow">88</a></p>
+        <p>2018 - {{ date('Y') }} <a href="{{ route('home') }}">rap-time.ru</a> by <a href="{{ route('by88') }}" rel="nofollow">88</a></p>
     </section>
 </footer>
-<!--[if lt IE 9]>
-<script src="{{ asset('js/ie.js') }}"></script>
-<![endif]-->
-<script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

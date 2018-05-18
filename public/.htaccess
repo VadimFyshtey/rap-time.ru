@@ -25,4 +25,20 @@
     RewriteCond %{SERVER_PORT} !^443$
     RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
 
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
+    RewriteRule ^index\.php$ https://rap-time.ru/ [R=301,L]
+
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /web\.config\ HTTP/
+    RewriteRule ^web\.config https://rap-time.ru/ [R=301,L]
+
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /mix-manifest\.json\ HTTP/
+    RewriteRule ^mix-manifest\.json https://rap-time.ru/ [R=301,L]
+
+    RewriteCond %{HTTPS_HOST} ^www\.rap-time\.ru$ [NC]
+    RewriteRule ^(.*)$ https://rap-time.ru/$1 [R=301,L]
+
+    RewriteCond %{HTTPS_HOST} (.*)
+    RewriteCond %{REQUEST_URI} /$ [NC]
+    RewriteRule ^(.*)(/)$ $1 [L,R=301]
+
 </IfModule>

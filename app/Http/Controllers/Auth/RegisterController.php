@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Role;
 use App\Models\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
+
+    const ROLE_ID = 3;
 
     /**
      * Create a new controller instance.
@@ -47,6 +49,14 @@ class RegisterController extends Controller
 
     }
 
+    public function getRoleId($role = 'User')
+    {
+        $roleId = Role::where('name', $role)->pluck('id')->first();
+        if(empty($roleId)) {
+            $roleId = self::ROLE_ID;
+        }
+        return $roleId;
+    }
 
     /**
      * Create a new user instance after a valid registration.
@@ -59,6 +69,8 @@ class RegisterController extends Controller
         return User::create([
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'avatar' => '/img/uploads/profile/avatar.png',
+            'role_id' => $this->getRoleId('User')
         ]);
     }
 }

@@ -12,8 +12,13 @@ try {
 
     require('bootstrap-sass');
     require('../libs/slick/js/slick.min.js');
+    require('./components/menu.js');
+    require('./components/modal.js');
+    require('./components/rating.js');
+    require('./components/sort.js');
+    require('./components/comment-reply.js');
+    require('./components/comment.js');
     require('./init.js');
-    require('./main.js');
 } catch (e) {}
 
 /**

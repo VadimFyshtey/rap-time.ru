@@ -3,10 +3,16 @@
   h1
     margin-bottom: 30px
 
+  h6
+    text-align: center
+    color: #000000
+
+  .text-search
+    text-align: center
+
   .sort-block
     font-weight: bold
     font-size: 14px
-    text-shadow: none
     padding: 4px
     margin-left: 20px
     .sort-item
@@ -38,10 +44,10 @@
 
   .artist-one div
     position: relative
-    bottom: 60px
+    bottom: 70px
     display: inline-block
     background-color: rgba(0,0,0,.5)
-    height: 60px
+    height: 70px
     padding: 6px
     width: 250px
     transition: all ease 0.2s
@@ -49,7 +55,9 @@
 
   .artist-one a
     display: inline-block
+    width: 100%
     font-weight: bold
+    font-size: 15px
     color: #ffffff
     outline: none
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
@@ -63,28 +71,82 @@
       font-size: 12px !important
       opacity: 0.9
 
+    a
+      padding-bottom: 5px
+
   .detail-other
     color: #000000
-    text-shadow: none
     font-size: 16px
-    margin: 0 12px 0 12px
+    margin: 0 12px
     padding: 0
     text-align: left
+
+    .no-active
+      margin: 5px
+
+    .active
+      background-color: $color-green
+      border: 1px solid $color-silver
+      color: #ffffff
+      margin: 5px
 
     i
       font-weight: bold
       font-size: 13px
 
     button
+      position: relative
+      bottom: 45px
       outline: none
       padding: 3px 7px
-      margin: -5px 0 0 0
-      transition: all ease 0.5s
+      margin: 5px 3px
+    .btn-rate:hover
+      background-color: $color-green
+      border: 1px solid $color-silver
+      color: #ffffff
+
+  .popular-artists
+    text-align: center
+    h3
+      margin-bottom: 15px !important
+
+    h5
+      color: $color-silver
+      font-weight: bold
+      font-size: 16px
+      a
+        &:hover
+          color: $color-green-second
+
+    img
+      height: 180px
+      width: 180px
+      border: 2px solid $color-green
       &:hover
-        background-color: $color-green
-        border: 1px solid $color-silver
-        transition: all ease 0.5s
-        color: #ffffff
+        -webkit-box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.75)
+        -moz-box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.75)
+        box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.75)
+        transition: all ease 0.3s
+        border: 2px solid $color-green
+
+    hr
+      border-color: $color-silver-second
+      margin: 12px auto
+      width: 95%
+      &:last-child
+        display: none
+
+    .detail-popul-other
+      margin: 0
+      padding: 0
+      font-weight: bold
+      font-size: 12px
+      color: #000000
+      position: relative
+      bottom: 0px
+      text-align: center
+      i
+        font-weight: bold
 
   .artists-sidebar
     background-color: rgba(0,0,0,.3)
@@ -97,7 +159,7 @@
       font-weight: bold
       font-size: 15px
       &:hover
-        color: $color-green
+        color: $color-green-second
 
     h3
       font-size: 16px
@@ -106,7 +168,7 @@
       background-color: rgba(0,0,0,.7)
       margin: 0
       text-align: center
-      border-radius: 2px
+      border-radius: 2px 2px 0 0
 
   .detail-other-like
     padding: 13px 2px

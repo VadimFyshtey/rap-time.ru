@@ -14,19 +14,21 @@ body
   background-size: cover
   letter-spacing: 1.3px
   font-size: 17px
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
 
 h1
   text-align: center
   color: $color-green
   font-weight: bold
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
+
+h2
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
 
 a
   color: inherit
   text-decoration: none
 a:hover
-  font-weight: bold
-  color: #000000
+  color: $color-green
   text-decoration: none
 a:link
   color: inherit
@@ -56,8 +58,54 @@ a:active
   -ms-transform: rotate(360deg)
   transform: rotate(360deg)
 
-.phpdebugbar
-  text-shadow: none
-
 .modal
   bottom: inherit
+
+#load
+  background-image: url("#{$path-image}preloader.gif")
+  position: fixed
+  left: 49%
+  top: 45%
+  width: 40px
+  height: 40px
+  z-index: 99999999999
+  display: none
+  text-shadow: none
+
+.errors-block
+  background-color: rgba(0,0,0,.3)
+  margin: 60px 60px 40px 60px
+  padding: 40px
+  text-align: center
+
+  a
+    text-decoration: underline
+    &:hover
+      color: $color-green-second
+
+.link-block
+  margin: 17px
+
+  a.button-save
+    display: inline-block
+    font-weight: 700
+    color: white
+    text-decoration: none
+    padding: .8em 1em calc(.8em + 3px)
+    border-radius: 3px
+    background: rgb(64,199,129)
+    box-shadow: 0 -3px rgb(53,167,110) inset
+    transition: 0.2s
+    margin-bottom: 13px
+
+  a.button-save:hover
+    background: rgb(53, 167, 110)
+  a.button-save:active
+    background: rgb(33,147,90)
+    box-shadow: 0 3px rgb(33,147,90) inset
+
+.edit-admin-link
+  margin: 10px
+  font-size: 15px
+  &:hover
+    color: $color-green-second

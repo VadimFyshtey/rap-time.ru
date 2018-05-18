@@ -1,6 +1,5 @@
 @include('layouts.section.header')
-@include('layouts.menu')
-
+@include('layouts.components.menu')
 
 @section('content')
 <div class="container">

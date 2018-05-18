@@ -107,5 +107,13 @@ $(document).ready(function(){
         $('#myInput').focus();
     });
 
+    $('#modal-contact').on('shown.bs.modal', function (e) {
+        e.preventDefault();
+        $("input[name='contactEmail']").focus();
+        $(".print-error-msg").css('display', 'none');
+        $(".print-error-msg").find("ul").html('');
+        $('body').removeAttr("style");
+    });
+
 });
 

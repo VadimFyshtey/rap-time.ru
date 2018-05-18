@@ -1,0 +1,95 @@
+.content-header
+  h2
+    text-align: left
+    font-weight: bold
+    font-size: 24px
+    margin: 3px 3px 25px 3px
+
+  .btn-add-post
+    margin: 35px 3px
+
+.my-alert-block
+  margin: 18px
+  a
+    text-decoration: none
+
+.content
+
+  h4
+    text-align: center
+    font-weight: bold
+
+  img.admin-list-image
+    height: 75px
+    width: 75px
+    border: 1px solid $color-green
+
+  img.edit-image-admin
+    height: 300px
+    width: 300px
+    border: 2px solid $color-green
+    clear: both
+    margin: 10px
+
+  .paginate-admin
+    text-align: center
+
+  .action-admin a
+    padding: 3px
+
+  hr
+    border-color: #c3c3c3
+
+img.select-artist-image
+  height: 75px
+  width: 75px
+
+/*Поиск*/
+#h-search
+  position: relative
+  max-width: 280px
+  width: 240px
+  margin: 0 20px 20px 0
+  float: right
+  top: -12px
+
+input
+  outline: none
+
+#h-search input[type="text"]
+  height: 45px
+  width: 100%
+  padding: 10px
+  font-size: 14px
+  color: #78828C
+  border: none
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1) !important
+  background-color: inherit
+
+#h-search input[type="text"]:focus
+  transition: all ease 1s
+  border-bottom: 2px solid rgba(0, 0, 0, 0.6) !important
+  background-color: inherit
+
+#h-search input[type="submit"]
+  position: absolute
+  top: 0
+  right: 0
+  width: 45px
+  height: 100%
+  border: none
+  background: transparent url("#{$path-image}h-search.png") no-repeat center
+
+#load
+  background-image: url("#{$path-image}preloader.gif")
+  position: fixed
+  left: 49%
+  top: 45%
+  width: 40px
+  height: 40px
+  z-index: 99999999999
+  display: none
+  text-shadow: none
+
+
+

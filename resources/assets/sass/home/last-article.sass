@@ -1,8 +1,9 @@
 .last-article
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
 
   .one-last-article
-    margin: 20px 0
-    background-color: rgba(153, 153, 153, 0.5)
+    margin: 25px 0 26px 0
+    background-color: rgba(49, 49, 49, 0.1)
     height: auto
     color: #ffffff
     border: 2px solid $color-green
@@ -25,10 +26,19 @@
 
     .detail-other
       color: #000000
-      text-shadow: none
       font-size: 13px
       margin: 0px 12px 0 12px
       padding: 0
+      text-shadow: none
+
+      .no-active
+        margin: -5px 2px 0 2px
+
+      .active
+        background-color: $color-green
+        border: 1px solid $color-silver
+        color: #ffffff
+        margin: -5px 2px 0 2px
 
       i
         font-weight: bold
@@ -37,11 +47,10 @@
         outline: none
         padding: 3px 7px
         margin: -5px 0 0 0
-        &:hover
-          background-color: $color-green
-          border: 1px solid #989898
-          transition: all ease 0.5s
-          color: #ffffff
+      .btn-rate:hover
+        background-color: $color-green
+        border: 1px solid $color-silver
+        color: #ffffff
 
     img
       width: 105px

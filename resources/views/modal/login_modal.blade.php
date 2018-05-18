@@ -5,7 +5,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <img src="/img/logo.png">
+                <img src="{{ asset('img/logo.png') }}" alt="Rap-Time" title="Rap-Time" />
             </div>
             <div class="modal-body">
                 <div class="print-error-msg" hidden>
@@ -38,9 +38,9 @@
                 <button type="button" class="btn btn-danger pull-left" data-toggle="modal" data-target="#modal-register">Регистрация</button>
                 <button type="button" class="btn btn-warning pull-left" data-toggle="modal" data-target="#modal-forgot">Востановление пароля</button>
                 <div class="social-auth pull-right">
-                    <a rel="nofollow" href="{{ url('/auth/google') }}"><img src="/img/google.png" alt=""></a>
-                    <a rel="nofollow" href="{{ url('/auth/facebook') }}"><img src="/img/facebook.png" alt=""></a>
-                    <a rel="nofollow" href="{{ url('/auth/twitter') }}"><img src="/img/twitter.png" alt=""></a>
+                    <a href="{{ url('/auth/google') }}" rel="nofollow"><img src="{{ asset('img/social/google.png') }}" alt="Rap-Time" title="Rap-Time" /></a>
+                    <a href="{{ url('/auth/facebook') }}" rel="nofollow"><img src="{{ asset('img/social/facebook.png') }}" alt="Rap-Time" title="Rap-Time" /></a>
+                    <a href="{{ url('/auth/twitter') }}" rel="nofollow"><img src="{{ asset('img/social/twitter.png') }}" alt="Rap-Time" title="Rap-Time" /></a>
                 </div>
             </div>
         </div>

@@ -152,6 +152,8 @@ return [
         */
         Barryvdh\Debugbar\ServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Barryvdh\Elfinder\ElfinderServiceProvider::class,
+        Torann\LaravelMetaTags\MetaTagsServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -215,6 +217,7 @@ return [
         */
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'MetaTag'   => Torann\LaravelMetaTags\Facades\MetaTag::class,
     ],
 
 ];

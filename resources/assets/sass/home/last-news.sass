@@ -1,8 +1,9 @@
 .last-news
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
 
   .one-last-news
-    margin: 25px 0
-    background-color: rgba(153, 153, 153, 0.5)
+    margin: 25px 0 25.5px 0
+    background-color: rgba(49, 49, 49, 0.1)
     height: auto
     color: #ffffff
     border: 2px solid $color-green
@@ -16,21 +17,29 @@
 
   .detail-other
     color: #000000
-    text-shadow: none
     font-size: 13px
     margin: 0 12px
+    text-shadow: none
 
     i
       font-weight: bold
 
+    .no-active
+      margin: -5px 2px 0 2px
+
+    .active
+      background-color: $color-green
+      border: 1px solid $color-silver
+      color: #ffffff
+      margin: -5px 2px 0 2px
+
     button
       padding: 3px 7px
       margin: -5px 0 0 0
-      &:hover
-        background-color: $color-green
-        border: 1px solid #989898
-        transition: all ease 0.5s
-        color: #ffffff
+    .btn-rate:hover
+      background-color: $color-green
+      border: 1px solid $color-silver
+      color: #ffffff
 
   img.one-last-news-img
     height: 200px

@@ -1,0 +1,100 @@
+.comments
+  max-width: 1000px
+
+  .by-author-comment
+    border: 1px solid $color-green-second !important
+
+  .by-author-comment-left
+    border-left-color: $color-green-second !important
+
+  li, ul
+    color: #FFFFFF
+    font-family: 'Droid Sans', sans-serif
+    font-size: 12px
+    font-weight: normal
+    font-style: normal
+
+  li.comment
+    clear: both
+    margin: 0 0 1em 0
+    padding: 0
+    list-style-type: none!important
+
+
+  .comment-container
+    border: 1px solid $color-silver-second
+    margin-bottom: 1em
+    background-color: rgba(0, 0, 0, 0.1)
+
+  .comment-author
+    float: left
+    margin: 20px 30px
+    max-width: 150px
+    img
+      border: 2px solid $color-green
+      width: 75px
+      height: 75px
+
+  .user-name
+    font-style: normal
+    text-align: center
+    font-size: 11px
+    margin: 10px 0 0 0
+    display: block
+
+  .intro
+    width: 100%
+    height: 15px
+    margin-bottom: 15px
+
+  .comment-date
+    float: left
+    margin: 0 0 0 0
+    color: #b77a2b
+
+  .comment-meta
+    margin: 0 0 0 135px
+    padding: 15px 20px 10px 20px
+    border-left: 1px solid $color-silver-second
+    min-height: 135px
+
+  .reply
+    a
+      font-weight: bold
+      text-decoration: underline
+      &:hover
+        color: $color-green-second
+
+  .children
+    margin: 10px 0 10px 10px !important
+    padding: 10px 0 10px 10px !important
+
+.comment-form
+  form
+    textarea
+      width: 100%
+      max-width: 800px !important
+      background-color: rgba(0, 0, 0, 0.1)
+      margin: 10px 0
+      padding: 10px
+      &::placeholder
+        color: $color-silver-second
+
+.no-auth-comment
+  font-size: 15px
+  padding: 20px 10px
+  a
+    color: $color-green-second
+    text-decoration: underline
+    &:hover
+      color: #0f2013
+
+.delete-comment
+  font-family: 'FontAwesome'
+  padding: 10px
+  font-style: normal !important
+  &:hover
+    color: #808080
+
+
+

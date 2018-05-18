@@ -24,6 +24,21 @@
     margin: 35px 0
     padding: 0
 
+  .admin-header-block
+    position: absolute
+    top: 20px
+    left: 20px
+    text-align: center
+    font-size: 14px
+    font-weight: bold
+    margin: 20px 0
+    color: $color-green
+
+  .admin-header-block a:hover
+    text-decoration: none
+    color: white
+    cursor: pointer
+
   .auth-header-block
     position: absolute
     top: 10px
@@ -32,7 +47,6 @@
     font-size: 14px
     font-weight: bold
     margin: 20px 0
-    text-shadow: none
     color: $color-green
 
   .auth-header-block a:hover
@@ -116,6 +130,11 @@
   margin: 0
   position: absolute
   top: 3px
+
+.fixed .admin-header-block
+  position: absolute
+  top: -5px
+  left: 20px
 
 /* Float Shadow */
 .float-shadow

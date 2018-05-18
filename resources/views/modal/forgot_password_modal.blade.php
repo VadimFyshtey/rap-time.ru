@@ -5,7 +5,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <img src="/img/logo.png">
+                <img src="{{ asset('img/logo.png') }}" alt="Rap-Time" title="Rap-Time" />
             </div>
             <div class="modal-body">
                 <div class="print-error-msg" hidden>
