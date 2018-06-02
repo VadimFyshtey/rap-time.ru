@@ -1,10 +1,14 @@
 @foreach($items as $item)
 <li id="li-comment-{{ $item->id }}" class="comment">
     <div id="comment-{{$item->id}}" class="comment-container {{ $item->user_id === Auth::id() ? 'by-author-comment' : '' }}">
-        @if(Auth::user()->role_id === 1 || Auth::user()->role_id === 2)
+        @if(Auth::user()->role_id === 1)
             <a href="{{ route($routeDelete, ['id' => $item->id]) }}" class="pull-right delete-comment"><i class="fas fa-times"></i></a>
         @endif
         <div class="comment-author">
+            @if($item->user->role_id === 1 || $item->user->role_id === 2)
+                <img src="{{ asset('img/admin.png') }}" alt="Admin" title="Admin" class="admin" />
+                <div class="clearfix"></div>
+            @endif
             @if(!empty($item->user->avatar))
                 <img src="{{ asset($item->user->avatar) }}" class="avatar" alt="Rap-Time" title="Rap-Time" />
             @endif

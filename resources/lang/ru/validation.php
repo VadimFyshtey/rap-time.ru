@@ -144,5 +144,7 @@ return [
         'full_content' => 'Полное описание',
         'artistNews' => 'Артисты',
         'tagsNews' => 'Теги',
+        'link_first' => 'Ссылка #1',
+        'link_second' => 'Ссылка #2',
     ],
 ];

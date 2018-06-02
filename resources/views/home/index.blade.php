@@ -10,9 +10,8 @@
             <h1>RAP-TIME - Сайт о Хип-Хопе</h1>
             <p>
                 Добро пожаловать на сайт посвященный оригинальному и действительно неповторимому музыкальному стилю - рэп.
-                В нас на сайте есть всьо о твоем любимом рэпере - биография, новости, альбомы и многое другое.
-                Узнай историю Хип-Хопа, историю войны запада и востока, в нас есть все от 2pac-а до kizaru.
-                Будь в курсе всех новостий из мира рэпа, все самое актуальное и новое в нас на сайте.
+                В нас на сайте есть Вы найдёте - биографии, новости, альбомы, тексты песен и многое другое.
+                Будь в курсе всех новостей из мира рэпа, все самые актуальное и интересные темы в нас на сайте.
                 Настоящий ценитель Хип-Хоп культуры точно найдет для себя очень много чего полезного.
             </p>
         </div>
@@ -65,7 +64,7 @@
                     @foreach($news as $item)
                     <div class="one-last-news">
                         <h4><a href="{{ route('newsView', ['alias' => $item->alias, 'id' => $item->id]) }}">{{ $item->title }}</a></h4>
-                        <img class="one-last-news-img" src="{{ asset("img/albums/{$item->image}") }}" alt="{{ $item->title }}" title="{{ $item->title }}">
+                        <img class="one-last-news-img" src="{{ asset("img/news/$item->image") }}" alt="{{ $item->title }}" title="{{ $item->title }}">
                         <div class="short-text">
                            {{ $item->short_content }}
                         </div>
@@ -108,12 +107,12 @@
                         <div class="one-last-interview">
                             <h4>
                                 <a href="{{ route('interviewView', ['alias' => $interview->alias, 'id' => $interview->id]) }}">
-                                    <?= mb_strimwidth($interview->title, 0, 50, "...") ?>
+                                    <?= mb_strimwidth($interview->title, 0, 45, "...") ?>
                                 </a>
                             </h4>
                             <img src="{{ asset("img/interviews/{$interview->image}") }}" alt="{{ $interview->title }}" title="{{ $interview->title }}">
                             <div class="short-text">
-                                <?= mb_strimwidth($interview->short_content, 0, 130, "...") ?>
+                                <?= mb_strimwidth($interview->short_content, 0, 90, "...") ?>
                             </div>
                             <div class="clearfix"></div>
                             <span class="detail-other pull-left">
@@ -165,12 +164,12 @@
                         <div class="one-last-article">
                             <h4>
                                 <a href="{{ route('articleView', ['alias' => $article->alias, 'id' => $article->id]) }}">
-                                    <?= mb_strimwidth($article->title, 0, 50, "...") ?>
+                                    <?= mb_strimwidth($article->title, 0, 45, "...") ?>
                                 </a>
                             </h4>
                             <img src="{{ asset("img/articles/{$article->image}") }}" alt="{{ $article->title }}" title="{{ $article->title }}">
                             <div class="short-text">
-                                <?= mb_strimwidth($article->short_content, 0, 130, "...") ?>
+                                <?= mb_strimwidth($article->short_content, 0, 90, "...") ?>
                             </div>
                             <div class="clearfix"></div>
                             <span class="detail-other pull-left">

@@ -35,9 +35,9 @@
                     <h3>Популярные интервью</h3>
                     @foreach($popularInterviews as $popular)
                         <h5>
-                            <a rel="nofollow" href="{{ route('interviewView', ['alias' => $popular->alias, 'id' => $popular->id]) }}"><?= mb_strimwidth($popular->title , 0, 45, "...") ?></a>
+                            <a href="{{ route('interviewView', ['alias' => $popular->alias, 'id' => $popular->id]) }}"><?= mb_strimwidth($popular->title , 0, 45, "...") ?></a>
                         </h5>
-                        <a rel="nofollow" href="{{ route('interviewView', ['alias' => $popular->alias, 'id' => $popular->id]) }}">
+                        <a href="{{ route('interviewView', ['alias' => $popular->alias, 'id' => $popular->id]) }}">
                             <img src="{{ asset("img/interviews/{$popular->image}") }}" alt="{{ $popular->title }}" title="{{ $popular->title }}"  />
                         </a>
                         <div class="clearfix"></div>
@@ -58,10 +58,10 @@
                     @if(count($interviews) >= 1)
                         @foreach($interviews as $interview)
                             <div class="news-one col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <a rel="nofollow" class="news-title" href="{{ route('interviewView', ['alias' => $interview->alias, 'id' => $interview->id]) }}" title="{{ $interview->title }}">
+                                <img class="pull-left" src="{{ asset("img/interviews/{$interview->image}") }}" alt="{{ $interview->title }}" title="{{ $interview->title }}"  />
+                                <a class="news-title" href="{{ route('interviewView', ['alias' => $interview->alias, 'id' => $interview->id]) }}" title="{{ $interview->title }}">
                                     {{ $interview->title }}
                                 </a>
-                                <img class="pull-left" src="{{ asset("img/interviews/{$interview->image}") }}" alt="{{ $interview->title }}" title="{{ $interview->title }}"  />
                                 <p class="short-text">
                                     {{ $interview->short_content }}
                                 </p>

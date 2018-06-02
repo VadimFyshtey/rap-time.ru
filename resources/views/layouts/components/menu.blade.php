@@ -2,7 +2,7 @@
 <div class="wrapper">
     @if(Auth::check() && (Auth::user()->role_id === 1 || Auth::user()->role_id === 2))
         <div class="col-lg-1 hidden-md hidden-sm hidden-xs pull-left admin-header-block">
-            <a href="{{ route('adminDashboardIndex') }}" rel="nofollow">Admin</a>
+            <a href="{{ route('adminDashboardIndex') }}" rel="nofollow" target="_blank">Admin</a>
         </div>
     @endif
     <div class="container">

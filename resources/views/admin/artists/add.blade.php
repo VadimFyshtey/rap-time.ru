@@ -46,7 +46,7 @@
                 <hr />
                 <div class="form-group">
                     <label for="nicknameArtist">Название артиста (группи)</label>
-                    <input type="text" class="form-control" id="nicknameArtist" minlength="3" maxlength="120" name="nickname" placeholder="Название артиста (группи)" required/>
+                    <input type="text" class="form-control" id="nicknameArtist" minlength="2" maxlength="120" name="nickname" placeholder="Название артиста (группи)" required/>
                 </div>
                 <div class="form-group">
                     <label for="shortTextArtist">Короткий текст</label>

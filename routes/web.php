@@ -14,9 +14,9 @@ Route::get('/artists/{sort?}/{by?}', ['uses' => 'ArtistsController@index', 'as' 
 Route::get('/artists/category/{alias}/{id}/{sort?}/{by?}', ['uses' => 'ArtistsController@category', 'as' => 'artistCategory']);
 
 // News
-Route::get('/news/{alias}/{id}', ['uses' => 'NewsController@view', 'as' => 'newsView']);
-Route::get('/news/search', ['uses' => 'NewsController@search', 'as' => 'newsSearch']);
 Route::get('/news/tag/{tag}', ['uses' => 'NewsController@tags', 'as' => 'newsTags']);
+Route::get('/news/search', ['uses' => 'NewsController@search', 'as' => 'newsSearch']);
+Route::get('/news/{alias}/{id}', ['uses' => 'NewsController@view', 'as' => 'newsView']);
 Route::get('/news/{sort?}/{by?}', ['uses' => 'NewsController@index', 'as' => 'newsIndex']);
 Route::get('/news/category/{alias}/{id}/{sort?}/{by?}', ['uses' => 'NewsController@category', 'as' => 'newsCategory']);
 
@@ -68,7 +68,7 @@ Route::get('/info', ['uses' => 'HomeController@info', 'as' => 'info']);
 Route::get('/contact', ['uses' => 'HomeController@contactPage', 'as' => 'contactPage']);
 Route::get('/advertising', ['uses' => 'HomeController@advertising', 'as' => 'advertising']);
 Route::get('/copyright', ['uses' => 'HomeController@copyright', 'as' => 'copyright']);
-Route::get('/by88', ['uses' => 'HomeController@by88', 'as' => 'by88']);
+Route::get('/embit88', ['uses' => 'HomeController@by88', 'as' => 'embit88']);
 
 // Profile
 Route::get('/profile/{id}', ['uses' => 'ProfileController@index', 'as' => 'profileIndex', 'middleware' => 'auth']);
@@ -104,6 +104,7 @@ Route::prefix('admin')->group(function () {
         Route::post('/update/{id}', ['uses' => 'Admin\NewsController@update', 'as' => 'adminNewsUpdate', 'middleware' => 'administrator']);
         Route::get('/delete/{id}', ['uses' => 'Admin\NewsController@delete', 'as' => 'adminNewsDelete', 'middleware' => 'administrator']);
         Route::get('/search/{q?}', ['uses' => 'Admin\NewsController@search', 'as' => 'adminNewsSearch', 'middleware' => 'administrator']);
+        Route::get('/filter/{value?}', ['uses' => 'Admin\NewsController@filter', 'as' => 'adminNewsFilter', 'middleware' => 'administrator']);
     });
 
     // Admin Artists
@@ -115,6 +116,7 @@ Route::prefix('admin')->group(function () {
         Route::post('/update/{id}', ['uses' => 'Admin\ArtistsController@update', 'as' => 'adminArtistUpdate', 'middleware' => 'administrator']);
         Route::get('/delete/{id}', ['uses' => 'Admin\ArtistsController@delete', 'as' => 'adminArtistDelete', 'middleware' => 'administrator']);
         Route::get('/search/{q?}', ['uses' => 'Admin\ArtistsController@search', 'as' => 'adminArtistSearch', 'middleware' => 'administrator']);
+        Route::get('/filter/{value?}', ['uses' => 'Admin\ArtistsController@filter', 'as' => 'adminArtistFilter', 'middleware' => 'administrator']);
     });
 
     // Admin Albums
@@ -126,6 +128,7 @@ Route::prefix('admin')->group(function () {
         Route::post('/update/{id}', ['uses' => 'Admin\AlbumsController@update', 'as' => 'adminAlbumUpdate', 'middleware' => 'administrator']);
         Route::get('/delete/{id}', ['uses' => 'Admin\AlbumsController@delete', 'as' => 'adminAlbumDelete', 'middleware' => 'administrator']);
         Route::get('/search/{q?}', ['uses' => 'Admin\AlbumsController@search', 'as' => 'adminAlbumSearch', 'middleware' => 'administrator']);
+        Route::get('/filter/{value?}', ['uses' => 'Admin\AlbumsController@filter', 'as' => 'adminAlbumFilter', 'middleware' => 'administrator']);
     });
 
     // Admin Interviews
@@ -137,6 +140,7 @@ Route::prefix('admin')->group(function () {
         Route::post('/update/{id}', ['uses' => 'Admin\InterviewsController@update', 'as' => 'adminInterviewUpdate', 'middleware' => 'administrator']);
         Route::get('/delete/{id}', ['uses' => 'Admin\InterviewsController@delete', 'as' => 'adminInterviewDelete', 'middleware' => 'administrator']);
         Route::get('/search/{q?}', ['uses' => 'Admin\InterviewsController@search', 'as' => 'adminInterviewSearch', 'middleware' => 'administrator']);
+        Route::get('/filter/{value?}', ['uses' => 'Admin\InterviewsController@filter', 'as' => 'adminInterviewFilter', 'middleware' => 'administrator']);
     });
 
     // Admin Articles
@@ -148,6 +152,7 @@ Route::prefix('admin')->group(function () {
         Route::post('/update/{id}', ['uses' => 'Admin\ArticlesController@update', 'as' => 'adminArticleUpdate', 'middleware' => 'administrator']);
         Route::get('/delete/{id}', ['uses' => 'Admin\ArticlesController@delete', 'as' => 'adminArticleDelete', 'middleware' => 'administrator']);
         Route::get('/search/{q?}', ['uses' => 'Admin\ArticlesController@search', 'as' => 'adminArticleSearch', 'middleware' => 'administrator']);
+        Route::get('/filter/{value?}', ['uses' => 'Admin\ArticlesController@filter', 'as' => 'adminArticleFilter', 'middleware' => 'administrator']);
     });
 
     // Admin Lyrics
@@ -159,6 +164,7 @@ Route::prefix('admin')->group(function () {
         Route::post('/update/{id}', ['uses' => 'Admin\LyricsController@update', 'as' => 'adminLyricsUpdate', 'middleware' => 'administrator']);
         Route::get('/delete/{id}', ['uses' => 'Admin\LyricsController@delete', 'as' => 'adminLyricsDelete', 'middleware' => 'administrator']);
         Route::get('/search/{q?}', ['uses' => 'Admin\LyricsController@search', 'as' => 'adminLyricsSearch', 'middleware' => 'administrator']);
+        Route::get('/filter/{value?}', ['uses' => 'Admin\LyricsController@filter', 'as' => 'adminLyricsFilter', 'middleware' => 'administrator']);
     });
 
     // Admin Comments

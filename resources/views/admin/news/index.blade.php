@@ -21,7 +21,17 @@
                 <input id='search' type="text" placeholder="Поиск по новостям" name="q" />
                 <input type="submit" value="" />
             </form>
+            <div class="clearfix"></div>
+            <form method="post" accept-charset="" action="{{ route('adminNewsFilter') }}" id="h-search" name="searchFilter" class="pull-right">
+                {{ csrf_field() }}
+                <select name="filterStatus" class="filter-status">
+                    <option>Статус</option>
+                    <option value="0">Не отображать</option>
+                    <option value="1">Отображать</option>
+                </select>
+            </form>
         </section>
+        <div class="clearfix"></div>
             @if(session('status'))
                 <div class="my-alert-block">
                     <div class="alert alert-success alert-dismissible">
@@ -38,6 +48,7 @@
                     <th>Название</th>
                     <th>Короткое описание</th>
                     <th>Изображение</th>
+                    <th>Статус</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -48,6 +59,7 @@
                     <td><a href="{{ route('adminNewsEdit', ['id' => $item->id]) }}">{{ $item->title }}</a></td>
                     <td>{{ $item->short_content }}</td>
                     <td><img class="admin-list-image" src="{{ asset("img/news/{$item->image}") }}" alt="{{ $item->title }}" title="{{ $item->title }}" /></td>
+                    <td>{{ $item->status === 0 ? 'Не отображать' : 'Отображать' }}</td>
                     <td class="action-admin">
                         <a href="{{ route('adminNewsDelete', ['id' => $item->id]) }}" onclick="return confirm('Вы действительно хотите удалить эту новость?')"><i class="glyphicon glyphicon-remove"></i></a>
                         <a href="{{ route('adminNewsEdit', ['id' => $item->id]) }}"><i class="glyphicon glyphicon-edit"></i></a>

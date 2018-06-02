@@ -7,6 +7,8 @@
     <div class="content-wrapper">
 
         <section class="content-header">
+            <br />
+            <br />
             <h2>Обновление исполнителя: {{ $artist->nickname }}</h2>
             <ol class="breadcrumb">
                 <li><a href="{{ route('adminDashboardIndex') }}">Главная</a></li>
@@ -46,7 +48,7 @@
                 <hr />
                 <div class="form-group">
                     <label for="nicknameArtist">Название артиста (группи)</label>
-                    <input type="text" class="form-control" id="nicknameArtist" minlength="3" maxlength="120" name="nickname" placeholder="Название артиста (группи)" required value="{{ $artist->nickname }}" />
+                    <input type="text" class="form-control" id="nicknameArtist" minlength="2" maxlength="120" name="nickname" placeholder="Название артиста (группи)" required value="{{ $artist->nickname }}" />
                 </div>
                 <div class="form-group">
                     <label for="shortTextArtist">Короткий текст</label>
@@ -73,7 +75,7 @@
                 <div class="form-group">
                     <label for="categoryArtist">Категория</label>
                     <select class="form-control" id="categoryArtist" name="category_id">
-                        <option value="{{ $category ? $category->id : '' }}" {{ $category ? 'selected disabled' : '' }}>
+                        <option value="{{ $category ? $category->id : '' }}" {{ $category ? 'selected' : '' }}>
                             {{ $category ? $category->title : '' }}
                         </option>
                         @foreach($categories as $category)

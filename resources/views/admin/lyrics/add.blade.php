@@ -91,4 +91,8 @@
 
     </div>
 @show
+<script>
+    var editor = CKEDITOR.replace( 'textLyrics' );
+    var editor2 = CKEDITOR.replace( 'translateLyrics' );
+</script>
 @include('admin.layouts.section.footer')

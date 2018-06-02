@@ -249,7 +249,9 @@
   .news-info-image {
     text-align: center;
   }
-
+  .lyrics-text-detail {
+    width: inherit !important;
+  }
   .lyrics-view-block {
 
     .lyrics-video {
@@ -350,9 +352,14 @@
     .comment-meta {
       margin: 0px 0 0 65px !important;
     }
-    img {
+    img.avatar {
       height: 50px !important;
       width: 50px !important;
+    }
+    img.admin {
+      left: 12px !important;
+      height: 25px !important;
+      width: 25px !important;
     }
   }
   .children{

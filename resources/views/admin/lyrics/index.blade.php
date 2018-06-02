@@ -21,7 +21,17 @@
                 <input id='search' type="text" placeholder="Поиск по текстам" name="q" />
                 <input type="submit" value="" />
             </form>
+            <div class="clearfix"></div>
+            <form method="post" accept-charset="" action="{{ route('adminLyricsFilter') }}" id="h-search" name="searchFilter" class="pull-right">
+                {{ csrf_field() }}
+                <select name="filterStatus" class="filter-status">
+                    <option>Статус</option>
+                    <option value="0">Не отображать</option>
+                    <option value="1">Отображать</option>
+                </select>
+            </form>
         </section>
+        <div class="clearfix"></div>
             @if(session('status'))
                 <div class="my-alert-block">
                     <div class="alert alert-success alert-dismissible">
@@ -37,6 +47,7 @@
                     <th>ID</th>
                     <th>Исполнитель</th>
                     <th>Название песни</th>
+                    <th>Статус</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -46,6 +57,7 @@
                     <td>#{{ $item->id }}</td>
                     <td><a href="{{ route('adminLyricsEdit', ['id' => $item->id]) }}">{{ $item->artist_name }}</a></td>
                     <td>{{ $item->lyrics_name }}</td>
+                    <td>{{ $item->status === 0 ? 'Не отображать' : 'Отображать' }}</td>
                     <td class="action-admin">
                         <a href="{{ route('adminLyricsDelete', ['id' => $item->id]) }}" onclick="return confirm('Вы действительно хотите удалить этот текст песни?')">
                             <i class="glyphicon glyphicon-remove"></i>

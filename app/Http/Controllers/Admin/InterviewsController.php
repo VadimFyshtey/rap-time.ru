@@ -139,4 +139,12 @@ class InterviewsController extends DefaultAdminController
         return view('admin.interviews.search', compact('interviews', 'q'));
     }
 
+    public function filter($value = null)
+    {
+        $value = trim(strip_tags($_GET['value']));
+        $interviews = Interview::orderCreated()->where('status', $value)->paginate(self::PAGINATION_PAGE);
+        $interviews->appends(['value' => $value]);
+        return view('admin.interviews.filter', compact('interviews'));
+    }
+
 }

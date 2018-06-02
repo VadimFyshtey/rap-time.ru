@@ -7,6 +7,8 @@
     <div class="content-wrapper">
 
         <section class="content-header">
+            <br />
+            <br />
             <h2>Обновление новости: {{ $news->title }}</h2>
             <ol class="breadcrumb">
                 <li><a href="{{ route('adminDashboardIndex') }}">Главная</a></li>
@@ -80,7 +82,7 @@
                 <div class="form-group">
                     <label for="categoryNews">Категория</label>
                     <select class="form-control" id="categoryNews" name="category_id">
-                        <option value="{{ $category ? $category->id : '' }}" {{ $category ? 'selected disabled' : '' }}>
+                        <option value="{{ $category ? $category->id : '' }}" {{ $category ? 'selected' : '' }}>
                             {{ $category ? $category->title : '' }}
                         </option>
                         @foreach($categories as $category)
@@ -97,7 +99,7 @@
                 <h4>SEO</h4>
                 <div class="form-group">
                     <label for="titleSeoNews">Title</label>
-                    <input type="text" class="form-control" id="titleSeoNews" name="title_seo"  minlength="5" maxlength="150" placeholder="Title seo" required value="{{ $news->description_seo }}" />
+                    <input type="text" class="form-control" id="titleSeoNews" name="title_seo"  minlength="5" maxlength="150" placeholder="Title seo" required value="{{ $news->title_seo }}" />
                 </div>
                 <div class="form-group">
                     <label for="descriptionSeoNews">Description</label>

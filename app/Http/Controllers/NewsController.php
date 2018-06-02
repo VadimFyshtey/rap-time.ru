@@ -20,21 +20,24 @@ class NewsController extends DefaultController
 
     public function index(Request $sort, $by = null)
     {
-
-        $news = Cache::remember('newsIndex', self::CACHE_TIME_ITEM, function()
+        $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $news = Cache::remember('newsIndex_' . $currentPage, self::CACHE_TIME_ITEM_NEWS, function()
         {
-            return News::status()->orderCreated()->paginate(self::PAGINATION_PAGE);
+            return News::select('id', 'title', 'short_content', 'image', 'alias', 'view', 'rate_count', 'created_at')
+                ->status()->orderCreated()->paginate(self::PAGINATION_PAGE);
         });
 
         if(!empty($sort->sort) || !empty($by)) {
             $by = $sort->by;
-            $news = News::status()->orderBy($sort->sort, $by)->paginate(self::PAGINATION_PAGE);
+            $news = News::select('id', 'title', 'short_content', 'image', 'alias', 'view', 'rate_count', 'created_at')
+                ->status()->orderBy($sort->sort, $by)->paginate(self::PAGINATION_PAGE);
             $news->appends(['sort' => $sort->sort, 'by' => $by]);
         }
 
-        $popularNews = Cache::remember('popularNewsIndex', self::CACHE_TIME_POPULAR, function()
+        $popularNews = Cache::remember('popularNews', self::CACHE_TIME_POPULAR, function()
         {
-            return News::status()->orderView()->limit(self::LIMIT_POPULAR)->get();
+            return News::select('id', 'title', 'image', 'alias', 'view', 'created_at')
+                ->status()->orderView()->limit(self::LIMIT_POPULAR)->get();
         });
 
         $categories = Cache::remember('categories', self::CACHE_TIME_CATEGORIES, function()
@@ -63,9 +66,16 @@ class NewsController extends DefaultController
 
         $news->viewedCounter();
 
-        $popularNews = Cache::remember('popularNewsView', self::CACHE_TIME_POPULAR, function()
+        $popularNews = Cache::remember('popularNews', self::CACHE_TIME_POPULAR, function()
         {
-            return News::status()->orderView()->limit(self::LIMIT_POPULAR)->get();
+            return News::select('id', 'title', 'image', 'alias', 'view', 'created_at')
+                ->status()->orderView()->limit(self::LIMIT_POPULAR)->get();
+        });
+
+        $otherNews = Cache::remember('otherNews_' . $alias . '_' . $id, self::CACHE_TIME_OTHER, function() use ($alias, $id)
+        {
+            return News::select('id', 'title', 'alias')
+                ->status()->inRandomOrder()->where('id', '!=', $id)->limit(self::LIMIT_OTHER)->get();
         });
 
         $comments = $news->comments->groupBy('parent_id')->map(function($groupItems){
@@ -75,15 +85,17 @@ class NewsController extends DefaultController
         MetaTag::set('title', $news->title_seo);
         MetaTag::set('description', $news->description_seo);
 
-        return view('news.view', compact('news', 'popularNews', 'comments'));
+        return view('news.view', compact('news', 'popularNews', 'otherNews', 'comments'));
     }
 
     public function category($alias, $id, Request $sort, $by = null)
     {
 
-        $news = Cache::remember('newsCategory', self::CACHE_TIME_ITEM, function() use ($id)
+        $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $news = Cache::remember('newsCategory_' . $id . '_' . $currentPage, self::CACHE_TIME_ITEM_NEWS, function() use ($id)
         {
-            return News::status()->orderCreated()->where('category_id', $id)->paginate(self::PAGINATION_PAGE);
+            return News::select('id', 'title', 'short_content', 'image', 'alias', 'view', 'rate_count', 'created_at')
+                ->status()->orderCreated()->where('category_id', $id)->paginate(self::PAGINATION_PAGE);
         });
 
         if(!empty($sort->sort) || !empty($by)) {
@@ -92,9 +104,10 @@ class NewsController extends DefaultController
             $news->appends(['sort' => $sort->sort, 'by' => $by]);
         }
 
-        $popularNews = Cache::remember('popularNewsCategory', self::CACHE_TIME_POPULAR, function() use ($id)
+        $popularNews = Cache::remember('popularNews', self::CACHE_TIME_POPULAR, function()
         {
-            return News::status()->orderView()->where('category_id', $id)->limit(self::LIMIT_POPULAR)->get();
+            return News::select('id', 'title', 'image', 'alias', 'view', 'created_at')
+                ->status()->orderView()->limit(self::LIMIT_POPULAR)->get();
         });
 
         $category = Category::findOrfail($id);
@@ -111,15 +124,17 @@ class NewsController extends DefaultController
 
     public function tags($tag)
     {
-        $news = News::with('tags')->whereHas('tags', function($q) use ($tag) {
+        $news = News::select('id', 'title', 'short_content', 'image', 'alias', 'view', 'rate_count', 'created_at')
+            ->with('tags')->whereHas('tags', function($q) use ($tag) {
             return $q->where('tag', 'like', "%{$tag}%");
         })->paginate(self::PAGINATION_PAGE);
 
         if(count($news) === 0) abort(404);
 
-        $popularNews = Cache::remember('popularNewsTags', self::CACHE_TIME_POPULAR, function()
+        $popularNews = Cache::remember('popularNews', self::CACHE_TIME_POPULAR, function()
         {
-            return News::status()->orderView()->limit(self::LIMIT_POPULAR)->get();
+            return News::select('id', 'title', 'image', 'alias', 'view', 'created_at')
+                ->status()->orderView()->limit(self::LIMIT_POPULAR)->get();
         });
 
         $categories = Cache::remember('categories', self::CACHE_TIME_CATEGORIES, function()
@@ -137,7 +152,9 @@ class NewsController extends DefaultController
     {
         $q = trim(strip_tags($request->get('q')));
 
-        $news = News::where('title','LIKE',"%{$q}%")
+        $news = News::select('id', 'title', 'short_content', 'image', 'alias', 'view', 'rate_count', 'created_at')
+            ->where('title','LIKE',"%{$q}%")
+            ->orWhere('short_content','LIKE',"%{$q}%")
             ->orWhere('full_content','LIKE',"%{$q}%")
             ->status()
             ->orderId()
@@ -145,9 +162,10 @@ class NewsController extends DefaultController
 
         $news->appends(['q' => $q]);
 
-        $popularNews = Cache::remember('popularNewsSearch', self::CACHE_TIME_POPULAR, function()
+        $popularNews = Cache::remember('popularNews', self::CACHE_TIME_POPULAR, function()
         {
-            return News::status()->orderView()->limit(self::LIMIT_POPULAR)->get();
+            return News::select('id', 'title', 'image', 'alias', 'view', 'created_at')
+                ->status()->orderView()->limit(self::LIMIT_POPULAR)->get();
         });
 
         $categories = Cache::remember('categories', self::CACHE_TIME_CATEGORIES, function()

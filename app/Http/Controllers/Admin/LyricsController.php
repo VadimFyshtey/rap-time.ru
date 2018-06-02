@@ -125,4 +125,12 @@ class LyricsController extends DefaultAdminController
         return view('admin.lyrics.search', compact('lyrics', 'q'));
     }
 
+    public function filter($value = null)
+    {
+        $value = trim(strip_tags($_GET['value']));
+        $lyrics = Lyrics::orderCreated()->where('status', $value)->paginate(self::PAGINATION_PAGE);
+        $lyrics->appends(['value' => $value]);
+        return view('admin.lyrics.filter', compact('lyrics'));
+    }
+
 }

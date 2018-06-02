@@ -39,6 +39,7 @@
                     <th>Исполнитель</th>
                     <th>Альбом</th>
                     <th>Изображение</th>
+                    <th>Статус</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -49,7 +50,8 @@
                         <td>#{{ $album->id }}</td>
                         <td><a href="{{ route('adminAlbumEdit', ['id' => $album->id]) }}">{{ $album->artist_name }}</a></td>
                         <td><a href="{{ route('adminAlbumEdit', ['id' => $album->id]) }}">{{ $album->album_name }}</a></td>
-                        <td><img class="admin-list-image" src="{{ asset("img/albums/{$album->image}") }}" alt="{{ $album->artist_name }} - {{ $album->album_name }}" title="{{ $album->artist_name }} - {{ $album->album_name }}" /></td>
+                        <td><img class="admin-list-image" src="{{ asset("img/albums/$album->image") }}" alt="{{ $album->artist_name }} - {{ $album->album_name }}" title="{{ $album->artist_name }} - {{ $album->album_name }}" /></td>
+                        <td>{{ $album->status === 0 ? 'Не отображать' : 'Отображать' }}</td>
                         <td class="action-admin">
                             <a href="{{ route('adminAlbumDelete', ['id' => $album->id]) }}" onclick="return confirm('Вы действительно хотите удалить этот альбом?')"><i class="glyphicon glyphicon-remove"></i></a>
                             <a href="{{ route('adminAlbumEdit', ['id' => $album->id]) }}"><i class="glyphicon glyphicon-edit"></i></a>

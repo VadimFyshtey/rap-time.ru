@@ -38,6 +38,7 @@
                     <th>ID</th>
                     <th>Исполнитель</th>
                     <th>Название песни</th>
+                    <th>Статус</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -48,6 +49,7 @@
                         <td>#{{ $item->id }}</td>
                         <td><a href="{{ route('adminLyricsEdit', ['id' => $item->id]) }}">{{ $item->artist_name }}</a></td>
                         <td>{{ $item->lyrics_name }}</td>
+                        <td>{{ $item->status === 0 ? 'Не отображать' : 'Отображать' }}</td>
                         <td class="action-admin">
                             <a href="{{ route('adminLyricsDelete', ['id' => $item->id]) }}" onclick="return confirm('Вы действительно хотите удалить этот текст песни?')">
                                 <i class="glyphicon glyphicon-remove"></i>

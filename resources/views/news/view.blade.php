@@ -60,6 +60,16 @@
                             @endforeach
                         </div>
                     @endif
+                    <div class="clearfix"></div>
+                    <hr />
+                    <div class="other-item">
+                        <p>Возможно Вам будет интересно:</p>
+                        <ul>
+                            @foreach($otherNews as $otherNewsOne)
+                                <a href="{{ route('newsView', ['alias' => $otherNewsOne->alias, 'id' => $otherNewsOne->id]) }}"><li>{{ $otherNewsOne->title }}</li></a>
+                            @endforeach
+                        </ul>
+                    </div>
                     @if(Auth::check() && (Auth::user()->role_id === 1 || Auth::user()->role_id === 2))
                         <div class="clearfix"></div>
                         <a href="{{ route('adminNewsEdit', ['id' => $news->id]) }}" rel="nofollow" target="_blank" class="edit-admin-link">
@@ -104,10 +114,10 @@
                 <div class="col-lg-3 col-md-12 com-sm-12 col-xs-12">
                     @if(count($news->artists) > 0)
                         <div class="col-lg-12 col-md-12 com-sm-12 col-xs-12 news-view-sidebar pull-right">
-                            <h3>Исполнители</h3>
+                            <h3>{{ count($news->artists) === 1 ? 'Исполнитель' : 'Исполнители' }}</h3>
                             @foreach($news->artists as $artist)
-                                <a rel="nofollow" href="{{ route('artistView', ['alias' => $artist-> alias]) }}"><img src="{{ asset("img/artists/{$artist->image}") }}" alt="{{ $artist->nickname }}" title="{{ $artist->nickname }}" /></a>
-                                <h4><a rel="nofollow" href="{{ route('artistView', ['alias' => $artist-> alias]) }}">{{ $artist->nickname }}</a></h4>
+                                <a href="{{ route('artistView', ['alias' => $artist->alias]) }}"><img src="{{ asset("img/artists/{$artist->image}") }}" alt="{{ $artist->nickname }}" title="{{ $artist->nickname }}" /></a>
+                                <h4><a href="{{ route('artistView', ['alias' => $artist->alias]) }}">{{ $artist->nickname }}</a></h4>
                                 <hr />
                             @endforeach
                         </div>
@@ -116,7 +126,7 @@
                         <h3>Популярные новости</h3>
                         @foreach($popularNews as $popular)
                             <h5>
-                                <a rel="nofollow" href="{{ route('newsView', ['alias' => $popular->alias, 'id' => $popular->id]) }}"><?= mb_strimwidth($popular->title , 0, 45, "...") ?></a>
+                                <a href="{{ route('newsView', ['alias' => $popular->alias, 'id' => $popular->id]) }}"><?= mb_strimwidth($popular->title , 0, 45, "...") ?></a>
                             </h5>
                             <a rel="nofollow" href="{{ route('newsView', ['alias' => $popular->alias, 'id' => $popular->id]) }}">
                                 <img src="{{ asset("img/news/{$popular->image}") }}" alt="{{ $popular->title }}" title="{{ $popular->title }}"  />

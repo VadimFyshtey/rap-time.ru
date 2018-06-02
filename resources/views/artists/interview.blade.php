@@ -4,7 +4,7 @@
 @section('content')
     <div class="container">
         <section class="news-list">
-            <h1>{{ $artistInterviews->nickname }} все интервью</h1>
+            <h1>{{ $artistInterviews->nickname }} - Все интервью</h1>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="breadcrumb-block">
                     <ol class="breadcrumb pull-left">
@@ -44,10 +44,10 @@
                 <div class="news-all">
                     @foreach($artistInterviews->interviews as $interview)
                         <div class="news-one col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <a rel="nofollow" class="news-title" href="{{ route('interviewView', ['alias' => $interview->alias, 'id' => $interview->id]) }}" title="{{ $interview->title }}">
+                            <img class="pull-left" src="{{ asset("img/interviews/{$interview->image}") }}" alt="{{ $interview->title }}" title="{{ $interview->title }}"  />
+                            <a class="news-title" href="{{ route('interviewView', ['alias' => $interview->alias, 'id' => $interview->id]) }}" title="{{ $interview->title }}">
                                 {{ $interview->title }}
                             </a>
-                            <img class="pull-left" src="{{ asset("img/interviews/{$interview->image}") }}" alt="{{ $interview->title }}" title="{{ $interview->title }}"  />
                             <p class="short-text">
                                 {{ $interview->short_content }}
                             </p>

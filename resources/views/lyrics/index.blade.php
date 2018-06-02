@@ -56,7 +56,7 @@
                 <div class="lyrics-all">
                 @foreach($lyrics as $item)
                     <div class="lyrics-one col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <a rel="nofollow" class="lyrics-title" href="{{ route('lyricsView', ['alias' => $item->alias, 'id' => $item->id]) }}" title="{{ $item->artist_name }} - {{ $item->lyrics_name }}">
+                        <a class="lyrics-title" href="{{ route('lyricsView', ['alias' => $item->alias, 'id' => $item->id]) }}" title="{{ $item->artist_name }} - {{ $item->lyrics_name }}">
                             {{ $item->artist_name }} - {{ $item->lyrics_name }}
                         </a>
                         <div class="clearfix"></div>

@@ -9,6 +9,7 @@
                     <i class="glyphicon glyphicon-home"></i> <span>Главная</span>
                 </a>
             </li>
+            <hr />
             <li>
                 <a href="{{ route('adminNewsIndex') }}">
                     <i class="glyphicon glyphicon-th-list"></i>
@@ -41,10 +42,11 @@
             </li>
             <li>
                 <a href="{{ route('adminArticleIndex') }}">
-                    <i class="glyphicon glyphicon-list-alt"></i>
+                    <i class="glyphicon glyphicon-th-list"></i>
                     <span>Статьи</span>
                 </a>
             </li>
+            <hr />
             <li>
                 <a href="{{ route('adminUserIndex') }}">
                     <i class="glyphicon glyphicon-user"></i>

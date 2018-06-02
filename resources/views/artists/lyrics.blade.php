@@ -4,7 +4,7 @@
 @section('content')
     <div class="container">
         <section class="lyrics-list">
-            <h1>{{ $artistLyrics->nickname }} тексты песен</h1>
+            <h1>{{ $artistLyrics->nickname }} - Тексты песен</h1>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="breadcrumb-block">
                     <ol class="breadcrumb pull-left">
@@ -41,7 +41,7 @@
                 <div class="lyrics-all">
                     @foreach($artistLyrics->lyrics as $lyric)
                         <div class="lyrics-one col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <a rel="nofollow" class="lyrics-title" href="{{ route('lyricsView', ['alias' => $lyric->alias, 'id' => $lyric->id]) }}" title="{{ $lyric->artist_name }} - {{ $lyric->lyrics_name }}">
+                            <a class="lyrics-title" href="{{ route('lyricsView', ['alias' => $lyric->alias, 'id' => $lyric->id]) }}" title="{{ $lyric->artist_name }} - {{ $lyric->lyrics_name }}">
                                 {{ $lyric->artist_name }} - {{ $lyric->lyrics_name }}
                             </a>
                             <div class="clearfix"></div>

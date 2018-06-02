@@ -48,7 +48,7 @@
                             <p><b>Дата публикации: </b>{{ \Carbon\Carbon::parse($article->updated_at)->format('Y-m-d')}}</p>
                         </span>
                     </div>
-                    <div class="col-lg-7 col-md-6 col-sm-6 col-xs-12 full-content">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 full-content">
                          {!! $article->full_content !!}
                     </div>
                     @if(count($article->tags) > 0)
@@ -60,6 +60,15 @@
                             @endforeach
                         </div>
                     @endif
+                    <hr />
+                    <div class="other-item">
+                        <p>Возможно Вам будет интересно:</p>
+                        <ul>
+                            @foreach($otherArticles as $otherArticle)
+                                <a href="{{ route('articleView', ['alias' => $otherArticle->alias, 'id' => $otherArticle->id]) }}"><li>{{ $otherArticle->title }}</li></a>
+                            @endforeach
+                        </ul>
+                    </div>
                     @if(Auth::check() && (Auth::user()->role_id === 1 || Auth::user()->role_id === 2))
                         <div class="clearfix"></div>
                         <a href="{{ route('adminArticleEdit', ['id' => $article->id]) }}" rel="nofollow" target="_blank" class="edit-admin-link">
@@ -104,10 +113,10 @@
                 <div class="col-lg-3 col-md-12 com-sm-12 col-xs-12">
                     @if(count($article->artists) > 0)
                         <div class="col-lg-12 col-md-12 com-sm-12 col-xs-12 news-view-sidebar pull-right">
-                            <h3>Исполнители</h3>
+                            <h3>{{ count($article->artists) === 1 ? 'Исполнитель' : 'Исполнители' }}</h3>
                             @foreach($article->artists as $artist)
-                                <a rel="nofollow" href="{{ route('artistView', ['alias' => $artist-> alias]) }}"><img src="{{ asset("img/artists/{$artist->image}") }}" alt="{{ $artist->nickname }}" title="{{ $artist->nickname }}" /></a>
-                                <h4><a rel="nofollow" href="{{ route('artistView', ['alias' => $artist-> alias]) }}">{{ $artist->nickname }}</a></h4>
+                                <a href="{{ route('artistView', ['alias' => $artist-> alias]) }}"><img src="{{ asset("img/artists/{$artist->image}") }}" alt="{{ $artist->nickname }}" title="{{ $artist->nickname }}" /></a>
+                                <h4><a href="{{ route('artistView', ['alias' => $artist-> alias]) }}">{{ $artist->nickname }}</a></h4>
                                 <hr />
                             @endforeach
                         </div>
@@ -116,7 +125,7 @@
                         <h3>Популярные статьи</h3>
                         @foreach($popularArticles as $popular)
                             <h5>
-                                <a rel="nofollow" href="{{ route('articleView', ['alias' => $popular->alias, 'id' => $popular->id]) }}"><?= mb_strimwidth($popular->title , 0, 45, "...") ?></a>
+                                <a href="{{ route('articleView', ['alias' => $popular->alias, 'id' => $popular->id]) }}"><?= mb_strimwidth($popular->title , 0, 45, "...") ?></a>
                             </h5>
                             <a rel="nofollow" href="{{ route('articleView', ['alias' => $popular->alias, 'id' => $popular->id]) }}">
                                 <img src="{{ asset("img/articles/{$popular->image}") }}" alt="{{ $popular->title }}" title="{{ $popular->title }}"  />

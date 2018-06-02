@@ -7,6 +7,8 @@
     <div class="content-wrapper">
 
         <section class="content-header">
+            <br />
+            <br />
             <h2>Обновление статьи: {{ $article->title }}</h2>
             <ol class="breadcrumb">
                 <li><a href="{{ route('adminDashboardIndex') }}">Главная</a></li>
@@ -86,7 +88,7 @@
                 <h4>SEO</h4>
                 <div class="form-group">
                     <label for="titleSeoArticle">Title</label>
-                    <input type="text" class="form-control" id="titleSeoArticle" name="title_seo"  minlength="5" maxlength="150" placeholder="Title seo" required value="{{ $article->description_seo }}" />
+                    <input type="text" class="form-control" id="titleSeoArticle" name="title_seo"  minlength="5" maxlength="150" placeholder="Title seo" required value="{{ $article->title_seo }}" />
                 </div>
                 <div class="form-group">
                     <label for="descriptionSeoArticle">Description</label>

@@ -57,7 +57,7 @@
             @foreach($artists as $artist)
                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
                     <div class="artist-one">
-                        <a rel="nofollow" href="{{ route('artistView', ['alias' => $artist->alias]) }}">
+                        <a href="{{ route('artistView', ['alias' => $artist->alias]) }}">
                             <img src="{{ asset("img/artists/{$artist->image}") }}" alt="{{ $artist->nickname }}" title="{{ $artist->nickname }}"  />
                         </a>
                         <div>

@@ -160,4 +160,12 @@ class NewsController extends DefaultAdminController
         return view('admin.news.search', compact('news', 'q'));
     }
 
+    public function filter($value = null)
+    {
+        $value = trim(strip_tags($_GET['value']));
+        $news = News::orderCreated()->where('status', $value)->paginate(self::PAGINATION_PAGE);
+        $news->appends(['value' => $value]);
+        return view('admin.news.filter', compact('news'));
+    }
+
 }

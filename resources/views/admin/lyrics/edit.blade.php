@@ -7,6 +7,8 @@
     <div class="content-wrapper">
 
         <section class="content-header">
+            <br />
+            <br />
             <h2>Обновление текста песни: {{ $lyrics->artist_name }} - {{ $lyrics->lyrics_name }}</h2>
             <ol class="breadcrumb">
                 <li><a href="{{ route('adminDashboardIndex') }}">Главная</a></li>
@@ -63,7 +65,7 @@
                 <div class="form-group">
                     <label for="categoryLyrics">Категория</label>
                     <select class="form-control" id="categoryLyrics" name="category_id">
-                        <option value="{{ $category ? $category->id : '' }}" {{ $category ? 'selected disabled' : '' }}>
+                        <option value="{{ $category ? $category->id : '' }}" {{ $category ? 'selected' : '' }}>
                             {{ $category ? $category->title : '' }}
                         </option>
                         @foreach($categories as $category)
@@ -99,4 +101,8 @@
 
     </div>
 @show
+<script>
+    var editor = CKEDITOR.replace( 'textLyrics' );
+    var editor2 = CKEDITOR.replace( 'translateLyrics' );
+</script>
 @include('admin.layouts.section.footer')

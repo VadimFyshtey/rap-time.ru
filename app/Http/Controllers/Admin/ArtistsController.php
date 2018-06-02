@@ -147,4 +147,12 @@ class ArtistsController extends DefaultAdminController
         return view('admin.artists.search', compact('artists', 'q'));
     }
 
+    public function filter($value = null)
+    {
+        $value = trim(strip_tags($_GET['value']));
+        $artists = Artist::orderCreated()->where('status', $value)->paginate(self::PAGINATION_PAGE);
+        $artists->appends(['value' => $value]);
+        return view('admin.artists.filter', compact('artists'));
+    }
+
 }

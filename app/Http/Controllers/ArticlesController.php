@@ -19,21 +19,24 @@ class ArticlesController extends DefaultController
 
     public function index(Request $sort, $by = null)
     {
-
-        $articles = Cache::remember('articlesIndex', self::CACHE_TIME_ITEM, function()
+        $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $articles = Cache::remember('articlesIndex_' . $currentPage, self::CACHE_TIME_ITEM, function()
         {
-            return Article::status()->orderCreated()->paginate(self::PAGINATION_PAGE);
+            return Article::select('id', 'title', 'short_content', 'image', 'alias', 'view', 'rate_count', 'created_at')
+                ->status()->orderCreated()->paginate(self::PAGINATION_PAGE);
         });
 
         if(!empty($sort->sort) || !empty($by)) {
             $by = $sort->by;
-            $articles = Article::status()->orderBy($sort->sort, $by)->paginate(self::PAGINATION_PAGE);
+            $articles = Article::select('id', 'title', 'short_content', 'image', 'alias', 'view', 'rate_count', 'created_at')
+                ->status()->orderBy($sort->sort, $by)->paginate(self::PAGINATION_PAGE);
             $articles->appends(['sort' => $sort->sort, 'by' => $by]);
         }
 
-        $popularArticles = Cache::remember('popularArticlesIndex', self::CACHE_TIME_POPULAR, function()
+        $popularArticles = Cache::remember('popularArticles', self::CACHE_TIME_POPULAR, function()
         {
-            return Article::status()->orderView()->limit(self::LIMIT_POPULAR)->get();
+            return Article::select('id', 'title', 'image', 'alias', 'view', 'created_at')
+            ->status()->orderView()->limit(self::LIMIT_POPULAR)->get();
         });
 
         MetaTag::set('title', 'Статьи на рэп тематику, популярные статьи о реперах');
@@ -57,9 +60,16 @@ class ArticlesController extends DefaultController
 
         $article->viewedCounter();
 
-        $popularArticles = Cache::remember('popularArticlesView', self::CACHE_TIME_POPULAR, function()
+        $popularArticles = Cache::remember('popularArticles', self::CACHE_TIME_POPULAR, function()
         {
-            return Article::status()->orderView()->limit(self::LIMIT_POPULAR)->get();
+            return Article::select('id', 'title', 'image', 'alias', 'view', 'created_at')
+                ->status()->orderView()->limit(self::LIMIT_POPULAR)->get();
+        });
+
+        $otherArticles = Cache::remember('otherArticles_' . $alias . '_' . $id, self::CACHE_TIME_OTHER, function() use ($alias, $id)
+        {
+            return Article::select('id', 'title', 'alias')
+                ->status()->inRandomOrder()->where('id', '!=', $id)->limit(self::LIMIT_OTHER)->get();
         });
 
         $comments = $article->comments->groupBy('parent_id')->map(function($groupItems){
@@ -69,19 +79,21 @@ class ArticlesController extends DefaultController
         MetaTag::set('title', $article->title_seo);
         MetaTag::set('description', $article->description_seo);
 
-        return view('articles.view', compact('article', 'popularArticles', 'comments'));
+        return view('articles.view', compact('article', 'popularArticles', 'otherArticles' ,'comments'));
     }
 
     public function tags($tag)
     {
-        $articles = Article::with('tags')->whereHas('tags', function($q) use ($tag) {
+        $articles = Article::select('id', 'title', 'short_content', 'image', 'alias', 'view', 'rate_count', 'created_at')
+            ->with('tags')->whereHas('tags', function($q) use ($tag) {
             return $q->where('tag', 'like', "%{$tag}%");
         })->paginate(self::PAGINATION_PAGE);
         if(count($articles) === 0) abort(404);
 
-        $popularArticles = Cache::remember('popularArticlesTags', self::CACHE_TIME_POPULAR, function()
+        $popularArticles = Cache::remember('popularArticles', self::CACHE_TIME_POPULAR, function()
         {
-            return Article::status()->orderView()->limit(self::LIMIT_POPULAR)->get();
+            return Article::select('id', 'title', 'image', 'alias', 'view', 'created_at')
+                ->status()->orderView()->limit(self::LIMIT_POPULAR)->get();
         });
 
         MetaTag::set('title', 'Статьи по тегу: ' . $tag);
@@ -94,7 +106,9 @@ class ArticlesController extends DefaultController
     {
         $q = trim(strip_tags($request->get('q')));
 
-        $articles = Article::where('title','LIKE',"%{$q}%")
+        $articles = Article::select('id', 'title', 'short_content', 'image', 'alias', 'view', 'rate_count', 'created_at')
+            ->where('title','LIKE',"%{$q}%")
+            ->orWhere('short_content','LIKE',"%{$q}%")
             ->orWhere('full_content','LIKE',"%{$q}%")
             ->status()
             ->orderId()
@@ -102,9 +116,10 @@ class ArticlesController extends DefaultController
 
         $articles->appends(['q' => $q]);
 
-        $popularArticles = Cache::remember('popularArticlesSearch', self::CACHE_TIME_POPULAR, function()
+        $popularArticles = Cache::remember('popularArticles', self::CACHE_TIME_POPULAR, function()
         {
-            return Article::status()->orderView()->limit(self::LIMIT_POPULAR)->get();
+            return Article::select('id', 'title', 'image', 'alias', 'view', 'created_at')
+                ->status()->orderView()->limit(self::LIMIT_POPULAR)->get();
         });
 
         MetaTag::set('title', 'Поиск по статьям: ' . $q);

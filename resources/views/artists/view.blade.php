@@ -25,7 +25,7 @@
                     @else
                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left artist-info artist-info-detail">
                         @if(!empty($artist->full_name))
-                            <p><b>Полное имя:</b> <i>{{ $artist->full_name }}</i></p>
+                            <p><b>Имя:</b> <i>{{ $artist->full_name }}</i></p>
                         @endif
                         @if(!empty($artist->birthday))
                             <p><b>Дата рождения:</b>  <i>{{ $artist->birthday }}</i></p>
@@ -35,7 +35,7 @@
                         @endif
                     </div>
                     @endif
-                    <div class="{{ empty($artist->full_name) && empty($artist->birthday) && empty($artist->location) ? 'col-lg-7 col-md-6 col-sm-6 col-xs-12' : 'col-lg-3 col-md-3 col-sm-3 col-xs-5' }} pull-right artist-info artist-info-like">
+                    <div class="{{ empty($artist->full_name) && empty($artist->birthday) && empty($artist->location) ? 'col-lg-7 col-md-6 col-sm-6 col-xs-12' : 'col-lg-3 col-md-3 col-sm-3 col-xs-12' }} pull-right artist-info artist-info-like">
                         <span class="detail-other-view pull-left">
                             <i class="fa fas fa-heart"> {{ $artist->rate_count }}</i>
                         </span>
@@ -65,7 +65,7 @@
                     </div>
                     @if(empty($artist->official_site) && empty($artist->fan_site))
                     @else
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-5 pull-right artist-info artist-info-site">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-5 pull-right artist-info artist-info-site hidden-xs">
                             @if(!empty($artist->official_site))
                                 <p><a href="{{ $artist->official_site }}" target="_blank" rel="nofollow">Официальный сайт</a></p>
                             @endif
@@ -157,7 +157,7 @@
                         </h4>
                         <hr />
                     @endforeach
-                    <a class="all-album-button" rel="nofollow" href="{{ route('artistAlbums', ['alias' => $artist->alias]) }}">{{ $artist->nickname }} - все альбомы</a>
+                    <a class="all-album-button" rel="nofollow" href="{{ route('artistAlbums', ['alias' => $artist->alias]) }}">Все альбомы</a>
                 </div>
                     <div class="clearfix"></div>
                 @endif
@@ -173,12 +173,12 @@
                             <img src="{{ asset("img/interviews/{$interview->image}") }}" alt="{{ $interview->title }}" title="{{ $interview->title }}" />
                         </a>
                         <p>
-                            <?= mb_strimwidth($interview->short_content, 0, 70, "...") ?>
+                            <?= mb_strimwidth($interview->short_content, 0, 60, "...") ?>
                         </p>
                         <div class="clearfix"></div>
                         <hr />
                     @endforeach
-                    <a rel="nofollow" class="all-album-button" href="{{ route('artistInterviews', ['alias' => $artist->alias]) }}">{{ $artist->nickname }} - все интервью</a>
+                    <a rel="nofollow" class="all-album-button" href="{{ route('artistInterviews', ['alias' => $artist->alias]) }}">Все интервью</a>
                 </div>
                     <div class="clearfix"></div>
                 @endif
@@ -194,12 +194,12 @@
                             <img src="{{ asset("img/news/{$news->image}") }}" alt="{{ $news->title }}" title="{{ $news->title }}" />
                         </a>
                         <p>
-                            <?= mb_strimwidth($news->short_content, 0, 70, "...") ?>
+                            <?= mb_strimwidth($news->short_content, 0, 60, "...") ?>
                         </p>
                         <div class="clearfix"></div>
                         <hr />
                     @endforeach
-                    <a class="all-album-button" rel="nofollow" href="{{ route('artistNews', ['alias' => $artist->alias]) }}">{{ $artist->nickname }} - все новости</a>
+                    <a class="all-album-button" rel="nofollow" href="{{ route('artistNews', ['alias' => $artist->alias]) }}">Все новости</a>
                 </div>
                     <div class="clearfix"></div>
                 @endif
@@ -219,7 +219,10 @@
                 </div>
                     <div class="clearfix"></div>
                 @endif
-            </div>
+                    <div class="col-lg-12 col-md-12 com-sm-12 col-xs-12 artist-view-sidebar artist-view-sidebar-article artist-view-sidebar-text pull-right">
+                        <h3>Реклама</h3>
+                    </div>
+                </div>
             </div>
         </section>
     </div>

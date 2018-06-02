@@ -8,8 +8,9 @@
 
         <section class="content-header">
             <h1>Главная</h1>
+            <br />
+            <h5>Всего записей на сайте: {{ $news + $artists + $albums + $lyrics + $interviews + $articles}}</h5>
         </section>
-
         <section class="content">
             <div class="row">
                 <div class="col-md-3 col-sm-6 col-xs-12">

@@ -152,4 +152,12 @@ class ArticlesController extends DefaultAdminController
         return view('admin.articles.search', compact('articles', 'q'));
     }
 
+    public function filter($value = null)
+    {
+        $value = trim(strip_tags($_GET['value']));
+        $articles = Article::orderCreated()->where('status', $value)->paginate(self::PAGINATION_PAGE);
+        $articles->appends(['value' => $value]);
+        return view('admin.articles.filter', compact('articles'));
+    }
+
 }

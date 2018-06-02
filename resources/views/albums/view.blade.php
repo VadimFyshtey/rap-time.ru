@@ -48,11 +48,12 @@
                             <p><b>Дата публикации: </b>{{ \Carbon\Carbon::parse($album->updated_at)->format('Y-m-d')}}</p>
                         </span>
                     </div>
-                    <div class="col-lg-7 col-md-6 col-sm-6 col-xs-12 full-content">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 full-content">
                         {!! $album->full_content !!}
                     </div>
                     <div class="clearfix"></div>
                     <div class="link-block">
+                        <h2>Скачать альбом {{ $album->artist_name }} - {{ $album->album_name }}: </h2>
                         @if(!empty($album->link_first))
                             <a href="{{ $album->link_first }}" class="button-save" rel="nofollow" target="_blank">Скачать #1</a>
                             <div class="clearfix hidden-lg hidden-md hidden-sm"></div>
@@ -62,6 +63,15 @@
                         @endif
                         <div class="clearfix"></div>
                         <br />
+                    </div>
+                    <hr />
+                    <div class="other-item">
+                        <p>Возможно Вам будет интересно:</p>
+                        <ul>
+                            @foreach($otherAlbums as $otherAlbum)
+                                <a href="{{ route('albumView', ['alias' => $otherAlbum->alias, 'id' => $otherAlbum->id]) }}"><li>{{ $otherAlbum->artist_name }} - {{ $otherAlbum->album_name }}</li></a>
+                            @endforeach
+                        </ul>
                     </div>
                     @if(Auth::check() && (Auth::user()->role_id === 1 || Auth::user()->role_id === 2))
                         <div class="clearfix"></div>
@@ -107,10 +117,10 @@
                 <div class="col-lg-3 col-md-12 com-sm-12 col-xs-12">
                     @if(count($album->artists) > 0)
                         <div class="col-lg-12 col-md-12 com-sm-12 col-xs-12 news-view-sidebar pull-right">
-                            <h3>Исполнители</h3>
+                            <h3>{{ count($album->artists) === 1 ? 'Исполнитель' : 'Исполнители' }}</h3>
                             @foreach($album->artists as $artist)
-                                <a rel="nofollow" href="{{ route('artistView', ['alias' => $artist-> alias]) }}"><img src="{{ asset("img/artists/{$artist->image}") }}" alt="{{ $artist->nickname }}" title="{{ $artist->nickname }}" /></a>
-                                <h4><a rel="nofollow" href="{{ route('artistView', ['alias' => $artist-> alias]) }}">{{ $artist->nickname }}</a></h4>
+                                <a href="{{ route('artistView', ['alias' => $artist-> alias]) }}"><img src="{{ asset("img/artists/{$artist->image}") }}" alt="{{ $artist->nickname }}" title="{{ $artist->nickname }}" /></a>
+                                <h4><a href="{{ route('artistView', ['alias' => $artist-> alias]) }}">{{ $artist->nickname }}</a></h4>
                                 <hr />
                             @endforeach
                         </div>
@@ -119,7 +129,7 @@
                         <h3>Популярные альбомы</h3>
                         @foreach($popularAlbums as $popular)
                             <h5>
-                                <a rel="nofollow" href="{{ route('albumView', ['alias' => $popular->alias, 'id' => $popular->id]) }}"><?= mb_strimwidth($popular->artist_name . ' - ' . $popular->album_name , 0, 55, "...") ?></a>
+                                <a href="{{ route('albumView', ['alias' => $popular->alias, 'id' => $popular->id]) }}"><?= mb_strimwidth($popular->artist_name . ' - ' . $popular->album_name , 0, 55, "...") ?></a>
                             </h5>
                             <a rel="nofollow" href="{{ route('albumView', ['alias' => $popular->alias, 'id' => $popular->id]) }}">
                                 <img src="{{ asset("img/albums/{$popular->image}") }}" alt="{{ $popular->artist_name }} - {{ $popular->album_name }}" title="{{ $popular->artist_name }} - {{ $popular->album_name }}"  />

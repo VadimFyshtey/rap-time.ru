@@ -4,7 +4,7 @@
 @section('content')
     <div class="container">
         <section class="news-list">
-            <h1>{{ $artistAlbums->nickname }} все альбомы</h1>
+            <h1>{{ $artistAlbums->nickname }} - Все альбомы</h1>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="breadcrumb-block">
                     <ol class="breadcrumb pull-left">
@@ -25,7 +25,7 @@
                             </a>
                         </h5>
                         <a rel="nofollow" href="{{ route('albumView', ['alias' => $popular->alias, 'id' => $popular->id]) }}">
-                            <img src="{{ asset("img/albums/{$popular->image}") }}" alt="{{ $popular->artist_name }} - {{ $popular->album_name }}" title="{{ $popular->artist_name }} - {{ $popular->album_name }}"  />
+                            <img src="{{ asset("img/albums/$popular->image") }}" alt="{{ $popular->artist_name }} - {{ $popular->album_name }}" title="{{ $popular->artist_name }} - {{ $popular->album_name }}"  />
                         </a>
                         <div class="clearfix"></div>
                         <span class="detail-popul-other">
@@ -44,10 +44,10 @@
                 <div class="news-all">
                     @foreach($artistAlbums->albums as $album)
                         <div class="news-one col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <a rel="nofollow" class="news-title" href="{{ route('albumView', ['alias' => $album->alias, 'id' => $album->id]) }}" title="{{ $album->artist_name }} {{ $album->album_name }}">
-                                {{ $album->artist_name }} {{ $album->album_name }}
+                            <img class="pull-left" src="{{ asset("img/albums/$album->image") }}" alt="{{ $album->artist_name }} {{ $album->album_name }}" title="{{ $album->artist_name }} {{ $album->album_name }}"  />
+                            <a class="news-title" href="{{ route('albumView', ['alias' => $album->alias, 'id' => $album->id]) }}" title="{{ $album->artist_name }} {{ $album->album_name }}">
+                                {{ $album->artist_name }} - {{ $album->album_name }}
                             </a>
-                            <img class="pull-left" src="{{ asset("img/albums/{$album->image}") }}" alt="{{ $album->artist_name }} {{ $album->album_name }}" title="{{ $album->artist_name }} {{ $album->album_name }}"  />
                             <p class="short-text">
                                 {{ $album->short_content }}
                             </p>

@@ -2,6 +2,7 @@
 
   h2
     text-align: center
+    margin-bottom: 30px
 
   .breadcrumb
     background: none
@@ -16,6 +17,9 @@
 
     .active
       color: $color-silver-second
+
+  .full-content p
+    font-size: 17px !important
 
   .artist-view-sidebar
     background-color: rgba(0,0,0,.3)
@@ -93,7 +97,7 @@
     .artist-info
       padding: 10px
       margin: 10px 0
-      font-size: 13px
+      font-size: 11px
       color: #e5e5e5
       border: 1px dashed $color-green-second
       text-align: center
@@ -105,6 +109,14 @@
         padding: 2px
         &:hover
           filter: grayscale(100%)
+
+    .artist-info-detail
+      padding: 15px 10px
+      font-size: 11px
+      text-align: left
+      p
+        margin: 5px 0 6px
+        padding: 1px
 
     .artist-info-like
       min-height: 112px
@@ -119,11 +131,11 @@
 
     .detail-other-view
       font-size: 13px
-      margin: 3px
+      margin: 0px
       padding-top: 13px
 
       i
-        font-size: 17px
+        font-size: 16px
 
     .detail-other
       color: #000000
@@ -165,7 +177,7 @@
         &:hover
           color: $color-green-second
     p
-      font-size: 13px
+      font-size: 12px
       text-align: left
 
 

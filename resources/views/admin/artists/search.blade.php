@@ -38,15 +38,18 @@
                     <th>ID</th>
                     <th>Название</th>
                     <th>Изображение</th>
+                    <th>Статус</th>
                     <th></th>
                 </tr>
                 </thead>
+                @if(count($artists) > 0)
                 <tbody>
                 @foreach($artists as $artist)
                     <tr>
                         <td>#{{ $artist->id }}</td>
                         <td><a href="{{ route('adminArtistEdit', ['id' => $artist->id]) }}">{{ $artist->nickname }}</a></td>
                         <td><img class="admin-list-image" src="{{ asset("img/artists/{$artist->image}") }}" alt="{{ $artist->nickname }}" title="{{ $artist->nickname }}" /></td>
+                        <td>{{ $artist->status === 0 ? 'Не отображать' : 'Отображать' }}</td>
                         <td class="action-admin">
                             <a href="{{ route('adminArtistDelete', ['id' => $artist->id]) }}" onclick="return confirm('Вы действительно хотите удалить исполнителя(группу)?')"><i class="glyphicon glyphicon-remove"></i></a>
                             <a href="{{ route('adminArtistEdit', ['id' => $artist->id]) }}"><i class="glyphicon glyphicon-edit"></i></a>
@@ -54,6 +57,7 @@
                     </tr>
                 @endforeach
                 </tbody>
+                @endif
             </table>
             @if(count($artists) === 0)
                 <h4>Поиск не дал результатов.</h4>

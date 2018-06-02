@@ -20,21 +20,24 @@ class AlbumsController extends DefaultController
 
     public function index(Request $sort, $by = null)
     {
-
-        $albums = Cache::remember('albumsIndex', self::CACHE_TIME_ITEM, function()
+        $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $albums = Cache::remember('albumsIndex_' . $currentPage, self::CACHE_TIME_ITEM, function()
         {
-            return Album::status()->orderCreated()->paginate(self::PAGINATION_PAGE);
+            return Album::select('id', 'artist_name', 'album_name', 'short_content', 'image', 'alias', 'view', 'rate_count', 'created_at')
+                ->status()->orderCreated()->paginate(self::PAGINATION_PAGE);
         });
 
         if(!empty($sort->sort) || !empty($by)) {
             $by = $sort->by;
-            $albums = Album::status()->orderBy($sort->sort, $by)->paginate(self::PAGINATION_PAGE);
+            $albums = Album::select('id', 'artist_name', 'album_name', 'short_content', 'image', 'alias', 'view', 'rate_count', 'created_at')
+                ->status()->orderBy($sort->sort, $by)->paginate(self::PAGINATION_PAGE);
             $albums->appends(['sort' => $sort->sort, 'by' => $by]);
         }
 
-        $popularAlbums = Cache::remember('popularAlbumsIndex', self::CACHE_TIME_POPULAR, function()
+        $popularAlbums = Cache::remember('popularAlbums', self::CACHE_TIME_POPULAR, function()
         {
-            return Album::status()->orderView()->limit(self::LIMIT_POPULAR)->get();
+            return Album::select('id', 'artist_name', 'album_name', 'image', 'alias', 'view', 'created_at')
+                ->status()->orderView()->limit(self::LIMIT_POPULAR)->get();
         });
 
         $categories = Cache::remember('categories', self::CACHE_TIME_CATEGORIES, function()
@@ -64,9 +67,16 @@ class AlbumsController extends DefaultController
 
         $album->viewedCounter();
 
-        $popularAlbums = Cache::remember('popularAlbumsView', self::CACHE_TIME_POPULAR, function()
+        $popularAlbums = Cache::remember('popularAlbums', self::CACHE_TIME_POPULAR, function()
         {
-            return Album::status()->orderView()->limit(self::LIMIT_POPULAR)->get();
+            return Album::select('id', 'artist_name', 'album_name', 'image', 'alias', 'view', 'created_at')
+                ->status()->orderView()->limit(self::LIMIT_POPULAR)->get();
+        });
+
+        $otherAlbums = Cache::remember('otherAlbums_' . $alias . '_' . $id, self::CACHE_TIME_OTHER, function() use ($alias, $id)
+        {
+            return Album::select('id', 'artist_name', 'album_name', 'alias')
+                ->status()->inRandomOrder()->where('id', '!=', $id)->limit(self::LIMIT_OTHER)->get();
         });
 
         $comments = $album->comments->groupBy('parent_id')->map(function($groupItems){
@@ -76,26 +86,29 @@ class AlbumsController extends DefaultController
         MetaTag::set('title', $album->title_seo);
         MetaTag::set('description', $album->description_seo);
 
-        return view('albums.view', compact('album', 'popularAlbums', 'comments'));
+        return view('albums.view', compact('album', 'popularAlbums', 'otherAlbums' ,'comments'));
     }
 
     public function category($alias, $id, Request $sort, $by = null)
     {
 
-        $albums = Cache::remember('albumsCategory', self::CACHE_TIME_ITEM, function() use ($id)
+        $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $albums = Cache::remember('albumCategory_' . $id . '_' . $currentPage, self::CACHE_TIME_ITEM, function() use ($id)
         {
             return Album::status()->orderCreated()->where('category_id', $id)->paginate(self::PAGINATION_PAGE);
         });
 
         if(!empty($sort->sort) || !empty($by)) {
             $by = $sort->by;
-            $albums = Album::status()->where('category_id', $id)->orderBy($sort->sort, $by)->paginate(self::PAGINATION_PAGE);
+            $albums = Album::select('id', 'artist_name', 'album_name', 'short_content', 'image', 'alias', 'view', 'rate_count', 'created_at')
+                ->status()->where('category_id', $id)->orderBy($sort->sort, $by)->paginate(self::PAGINATION_PAGE);
             $albums->appends(['sort' => $sort->sort, 'by' => $by]);
         }
 
-        $popularAlbums = Cache::remember('popularAlbumsCategory', self::CACHE_TIME_POPULAR, function() use ($id)
+        $popularAlbums = Cache::remember('popularAlbums', self::CACHE_TIME_POPULAR, function()
         {
-            return Album::status()->orderView()->where('category_id', $id)->limit(self::LIMIT_POPULAR)->get();
+            return Album::select('id', 'artist_name', 'album_name', 'image', 'alias', 'view', 'created_at')
+                ->status()->orderView()->limit(self::LIMIT_POPULAR)->get();
         });
 
         $category = Category::findOrfail($id);
@@ -113,21 +126,21 @@ class AlbumsController extends DefaultController
     public function search(Request $request)
     {
         $q = trim(strip_tags($request->get('q')));
-        $albums = Album::where('artist_name','LIKE',"%{$q}%")
+        $albums = Album::select('id', 'artist_name', 'album_name', 'short_content', 'image', 'alias', 'view', 'rate_count', 'created_at')
+            ->where('artist_name','LIKE',"%{$q}%")
             ->orWhere('album_name','LIKE',"%{$q}%")
             ->orWhere('short_content','LIKE',"%{$q}%")
-            ->orWhere('full_content','LIKE',"%{$q}%")
             ->status()
             ->orderId()
             ->paginate(self::PAGINATION_PAGE);
 
         $albums->appends(['q' => $q]);
 
-        $popularAlbums = Cache::remember('popularAlbumsSearch', self::CACHE_TIME_POPULAR, function()
+        $popularAlbums = Cache::remember('popularAlbums', self::CACHE_TIME_POPULAR, function()
         {
-            return Album::status()->orderView()->limit(self::LIMIT_POPULAR)->get();
+            return Album::select('id', 'artist_name', 'album_name', 'image', 'alias', 'view', 'created_at')
+                ->status()->orderView()->limit(self::LIMIT_POPULAR)->get();
         });
-
 
         $categories = Cache::remember('categories', self::CACHE_TIME_CATEGORIES, function()
         {

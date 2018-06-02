@@ -7,6 +7,8 @@
     <div class="content-wrapper">
 
         <section class="content-header">
+            <br />
+            <br />
             <h2>Обновление интервью: {{ $interview->title }}</h2>
             <ol class="breadcrumb">
                 <li><a href="{{ route('adminDashboardIndex') }}">Главная</a></li>
@@ -71,7 +73,7 @@
                 <div class="form-group">
                     <label for="categoryInterview">Категория</label>
                     <select class="form-control" id="categoryInterview" name="category_id">
-                        <option value="{{ $category ? $category->id : '' }}" {{ $category ? 'selected disabled' : '' }}>
+                        <option value="{{ $category ? $category->id : '' }}" {{ $category ? 'selected' : '' }}>
                             {{ $category ? $category->title : '' }}
                         </option>
                         @foreach($categories as $category)
@@ -88,7 +90,7 @@
                 <h4>SEO</h4>
                 <div class="form-group">
                     <label for="titleSeoInterview">Title</label>
-                    <input type="text" class="form-control" id="titleSeoInterview" name="title_seo"  minlength="5" maxlength="150" placeholder="Title seo" required value="{{ $interview->description_seo }}" />
+                    <input type="text" class="form-control" id="titleSeoInterview" name="title_seo"  minlength="5" maxlength="150" placeholder="Title seo" required value="{{ $interview->title_seo }}" />
                 </div>
                 <div class="form-group">
                     <label for="descriptionSeoInterview">Description</label>

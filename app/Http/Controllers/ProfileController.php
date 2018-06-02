@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use MetaTag;
 
 class ProfileController extends DefaultController
 {
@@ -38,6 +39,9 @@ class ProfileController extends DefaultController
                 return $query->with('news')->orderUpdated()->limit(self::LIMIT_LAST_ACTIVE);
             }])
             ->findOrFail($id);
+
+        MetaTag::set('title', 'Rap-Time.ru | Профиль пользователя ' . $user->name);
+        MetaTag::set('description', 'Наш сайт полностью посвящен рэпу, в нас вы найдете биографии, альбомы, новости, тексты песен своих любимых реперов.');
 
         return view('profile.index', compact('user'));
     }

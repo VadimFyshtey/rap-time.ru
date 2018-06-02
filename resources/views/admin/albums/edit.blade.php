@@ -7,6 +7,8 @@
     <div class="content-wrapper">
 
         <section class="content-header">
+            <br />
+            <br />
             <h2>Обновление альбома: {{ $album->artist_name }} - {{ $album->album_name }}</h2>
             <ol class="breadcrumb">
                 <li><a href="{{ route('adminDashboardIndex') }}">Главная</a></li>
@@ -53,7 +55,7 @@
                 <div class="form-group">
                     <label for="imageNews">Изображение</label>
                     <div class="clearfix"></div>
-                    <img class="edit-image-admin" src="{{ asset("img/albums/{ $album->image}") }}" alt="Rap-Time" title="Rap-Time" />
+                    <img class="edit-image-admin" src="{{ asset("img/albums/$album->image") }}" alt="Rap-Time" title="Rap-Time" />
                     <div class="clearfix"></div>
                     <label for="imageAlbum">Изображение</label>
                     <input type="file" id="imageAlbum" name="image" />
@@ -76,7 +78,7 @@
                 <div class="form-group">
                     <label for="categoryAlbum">Категория</label>
                     <select class="form-control" id="categoryAlbum" name="category_id">
-                        <option value="{{ $category ? $category->id : '' }}" {{ $category ? 'selected disabled' : '' }}>
+                        <option value="{{ $category ? $category->id : '' }}" {{ $category ? 'selected' : '' }}>
                             {{ $category ? $category->title : '' }}
                         </option>
                         @foreach($categories as $category)

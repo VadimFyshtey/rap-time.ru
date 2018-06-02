@@ -17,14 +17,14 @@
                     <div class="{{ $lyrics->translate === null ? 'col-lg-12 col-md-12' : 'col-lg-6 col-md-6' }} col-sm-12 col-xs-12 pull-left lyrics-text">
                         <div class="{{ $lyrics->translate === null ? 'lyrics-text-detail' : '' }}">
                             <h2>Текст песни: {{ $lyrics->artist_name }} - {{ $lyrics->lyrics_name }}</h2>
-                            {{ $lyrics->text }}
+                            {!! $lyrics->text !!}
                         </div>
                     </div>
                     @if(!empty($lyrics->translate))
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pull-left lyrics-translate">
                         <hr class="hidden-lg hidden-md" />
                         <h2>Перевод песни: {{ $lyrics->artist_name }} - {{ $lyrics->lyrics_name }}</h2>
-                        {{ $lyrics->translate }}
+                        {!! $lyrics->translate !!}
                     </div>
                     @endif
 
@@ -63,6 +63,16 @@
                             <p><b>Просмотры: </b>{{ $lyrics->view }}</p>
                             <p><b>Дата публикации: </b>{{ \Carbon\Carbon::parse($lyrics->updated_at)->format('Y-m-d')}}</p>
                         </span>
+                    </div>
+                    <div class="clearfix"></div>
+                    <hr />
+                    <div class="other-item">
+                        <p>Возможно Вам будет интересно:</p>
+                        <ul>
+                            @foreach($otherLyrics as $otherLyric)
+                                <a href="{{ route('lyricsView', ['alias' => $otherLyric->alias, 'id' => $otherLyric->id]) }}"><li>{{ $otherLyric->artist_name }} - {{ $otherLyric->lyrics_name }}</li></a>
+                            @endforeach
+                        </ul>
                     </div>
                     @if(Auth::check() && (Auth::user()->role_id === 1 || Auth::user()->role_id === 2))
                         <div class="clearfix"></div>
@@ -108,10 +118,10 @@
                 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                     @if(count($lyrics->artists) > 0)
                         <div class="col-lg-12 col-md-12 com-sm-12 col-xs-12 lyrics-view-sidebar pull-right">
-                            <h3>Исполнители</h3>
+                            <h3>{{ count($lyrics->artists) === 1 ? 'Исполнитель' : 'Исполнители' }}</h3>
                             @foreach($lyrics->artists as $artist)
-                                <a rel="nofollow" href="{{ route('artistView', ['alias' => $artist-> alias]) }}"><img src="{{ asset("img/artists/{$artist->image}") }}" alt="{{ $artist->nickname }}" title="{{ $artist->nickname }}" /></a>
-                                <h4><a rel="nofollow" href="{{ route('artistView', ['alias' => $artist-> alias]) }}">{{ $artist->nickname }}</a></h4>
+                                <a href="{{ route('artistView', ['alias' => $artist-> alias]) }}"><img src="{{ asset("img/artists/{$artist->image}") }}" alt="{{ $artist->nickname }}" title="{{ $artist->nickname }}" /></a>
+                                <h4><a href="{{ route('artistView', ['alias' => $artist-> alias]) }}">{{ $artist->nickname }}</a></h4>
                                 <hr />
                             @endforeach
                         </div>
@@ -121,7 +131,7 @@
                         <h3>Популярные песни</h3>
                         @foreach($popularLyrics as $popular)
                             <h5>
-                                <a rel="nofollow" href="{{ route('lyricsView', ['alias' => $popular->alias, 'id' => $popular->id]) }}">
+                                <a href="{{ route('lyricsView', ['alias' => $popular->alias, 'id' => $popular->id]) }}">
                                     <?= mb_strimwidth($popular->artist_name . ' - ' . $popular->lyrics_name , 0, 55, "...") ?>
                                 </a>
                             </h5>

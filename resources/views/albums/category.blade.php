@@ -61,10 +61,10 @@
                 <div class="news-all">
                     @foreach($albums as $album)
                         <div class="news-one col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <a rel="nofollow" class="news-title" href="{{ route('albumView', ['alias' => $album->alias, 'id' => $album->id]) }}" title="{{ $album->artist_name }} - {{ $album->album_name }}">
+                            <img class="pull-left" src="{{ asset("img/albums/{$album->image}") }}" alt="{{ $album->artist_name }} - {{ $album->album_name }}" title="{{ $album->artist_name }} - {{ $album->album_name }}"  />
+                            <a class="news-title" href="{{ route('albumView', ['alias' => $album->alias, 'id' => $album->id]) }}" title="{{ $album->artist_name }} - {{ $album->album_name }}">
                                 {{ $album->artist_name }} - {{ $album->album_name }}
                             </a>
-                            <img class="pull-left" src="{{ asset("img/albums/{$album->image}") }}" alt="{{ $album->artist_name }} - {{ $album->album_name }}" title="{{ $album->artist_name }} - {{ $album->album_name }}"  />
                             <p class="short-text">
                                 {{ $album->short_content }}
                             </p>

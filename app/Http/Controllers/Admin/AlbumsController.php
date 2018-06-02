@@ -146,4 +146,12 @@ class AlbumsController extends DefaultAdminController
         return view('admin.albums.search', compact('albums', 'q'));
     }
 
+    public function filter($value = null)
+    {
+        $value = trim(strip_tags($_GET['value']));
+        $albums = Album::orderCreated()->where('status', $value)->paginate(self::PAGINATION_PAGE);
+        $albums->appends(['value' => $value]);
+        return view('admin.albums.filter', compact('albums'));
+    }
+
 }

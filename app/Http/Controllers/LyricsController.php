@@ -20,21 +20,24 @@ class LyricsController extends DefaultController
 
     public function index(Request $sort, $by = null)
     {
-
-        $lyrics = Cache::remember('lyricsIndex', self::CACHE_TIME_ITEM, function()
+        $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $lyrics = Cache::remember('lyricsIndex_' . $currentPage, self::CACHE_TIME_ITEM, function()
         {
-            return Lyrics::status()->orderCreated()->paginate(self::PAGINATION_PAGE);
+            return Lyrics::select('id', 'artist_name', 'lyrics_name', 'alias', 'view', 'rate_count', 'created_at')
+                ->status()->orderCreated()->paginate(self::PAGINATION_PAGE);
         });
 
         if(!empty($sort->sort) || !empty($by)) {
             $by = $sort->by;
-            $lyrics = Lyrics::status()->orderBy($sort->sort, $by)->paginate(self::PAGINATION_PAGE);
+            $lyrics = Lyrics::select('id', 'artist_name', 'lyrics_name', 'alias', 'view', 'rate_count', 'created_at')
+                ->status()->orderBy($sort->sort, $by)->paginate(self::PAGINATION_PAGE);
             $lyrics->appends(['sort' => $sort->sort, 'by' => $by]);
         }
 
-        $popularLyrics = Cache::remember('popularLyricsIndex', self::CACHE_TIME_POPULAR, function()
+        $popularLyrics = Cache::remember('popularLyrics', self::CACHE_TIME_POPULAR, function()
         {
-            return Lyrics::status()->orderView()->limit(self::LIMIT_POPULAR)->get();
+            return Lyrics::select('id', 'artist_name', 'lyrics_name', 'alias', 'view', 'created_at')
+                ->status()->orderView()->limit(self::LIMIT_LYRICS)->get();
         });
 
         $categories = Cache::remember('categories', self::CACHE_TIME_CATEGORIES, function()
@@ -63,9 +66,16 @@ class LyricsController extends DefaultController
 
         $lyrics->viewedCounter();
 
-        $popularLyrics = Cache::remember('popularLyricsView', self::CACHE_TIME_POPULAR, function()
+        $popularLyrics = Cache::remember('popularLyrics', self::CACHE_TIME_POPULAR, function()
         {
-            return Lyrics::status()->orderView()->limit(self::LIMIT_POPULAR)->get();
+            return Lyrics::select('id', 'artist_name', 'lyrics_name', 'alias', 'view', 'created_at')
+                ->status()->orderView()->limit(self::LIMIT_LYRICS)->get();
+        });
+
+        $otherLyrics = Cache::remember('otherLyrics_' . $alias . '_' . $id, self::CACHE_TIME_OTHER, function() use ($alias, $id)
+        {
+            return Lyrics::select('id', 'artist_name', 'lyrics_name', 'alias')
+                ->status()->inRandomOrder()->where('id', '!=', $id)->limit(self::LIMIT_OTHER)->get();
         });
 
         $comments = $lyrics->comments->groupBy('parent_id')->map(function($groupItems){
@@ -75,26 +85,30 @@ class LyricsController extends DefaultController
         MetaTag::set('title', $lyrics->title_seo);
         MetaTag::set('description', $lyrics->description_seo);
 
-        return view('lyrics.view', compact('lyrics', 'popularLyrics', 'comments'));
+        return view('lyrics.view', compact('lyrics', 'popularLyrics', 'otherLyrics', 'comments'));
     }
 
     public function category($alias, $id, Request $sort, $by = null)
     {
 
-        $lyrics = Cache::remember('lyricsCategory', self::CACHE_TIME_ITEM, function() use ($id)
+        $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $lyrics = Cache::remember('lyricsCategory_' . $id . '_' . $currentPage, self::CACHE_TIME_ITEM, function() use ($id)
         {
-            return Lyrics::status()->orderCreated()->where('category_id', $id)->paginate(self::PAGINATION_PAGE);
+            return Lyrics::select('id', 'artist_name', 'lyrics_name', 'alias', 'view', 'rate_count', 'created_at')
+                ->status()->orderCreated()->where('category_id', $id)->paginate(self::PAGINATION_PAGE);
         });
 
         if(!empty($sort->sort) || !empty($by)) {
             $by = $sort->by;
-            $lyrics = Lyrics::status()->orderBy($sort->sort, $by)->where('category_id', $id)->paginate(self::PAGINATION_PAGE);
+            $lyrics = Lyrics::select('id', 'artist_name', 'lyrics_name', 'alias', 'view', 'rate_count', 'created_at')
+                ->status()->orderBy($sort->sort, $by)->where('category_id', $id)->paginate(self::PAGINATION_PAGE);
             $lyrics->appends(['sort' => $sort->sort, 'by' => $by]);
         }
 
-        $popularLyrics = Cache::remember('popularLyricsCategory', self::CACHE_TIME_POPULAR, function() use ($id)
+        $popularLyrics = Cache::remember('popularLyrics', self::CACHE_TIME_POPULAR, function()
         {
-            return Lyrics::status()->orderView()->where('category_id', $id)->limit(self::LIMIT_POPULAR)->get();
+            return Lyrics::select('id', 'artist_name', 'lyrics_name', 'alias', 'view', 'created_at')
+                ->status()->orderView()->limit(self::LIMIT_LYRICS)->get();
         });
 
         $category = Category::findOrfail($id);
@@ -113,7 +127,8 @@ class LyricsController extends DefaultController
     {
         $q = trim(strip_tags($request->get('q')));
 
-        $lyrics = Lyrics::where('artist_name','LIKE',"%{$q}%")
+        $lyrics = Lyrics::select('id', 'artist_name', 'lyrics_name', 'alias', 'view', 'rate_count', 'created_at')
+            ->where('artist_name','LIKE',"%{$q}%")
             ->orWhere('lyrics_name','LIKE',"%{$q}%")
             ->status()
             ->orderId()
@@ -121,9 +136,10 @@ class LyricsController extends DefaultController
 
         $lyrics->appends(['q' => $q]);
 
-        $popularLyrics = Cache::remember('popularLyricsSearch', self::CACHE_TIME_POPULAR, function()
+        $popularLyrics = Cache::remember('popularLyrics', self::CACHE_TIME_POPULAR, function()
         {
-            return Lyrics::status()->orderView()->limit(self::LIMIT_POPULAR)->get();
+            return Lyrics::select('id', 'artist_name', 'lyrics_name', 'alias', 'view', 'created_at')
+                ->status()->orderView()->limit(self::LIMIT_LYRICS)->get();
         });
 
         $categories = Cache::remember('categories', self::CACHE_TIME_CATEGORIES, function()

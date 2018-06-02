@@ -39,6 +39,7 @@
                     <th>Название</th>
                     <th>Короткое описание</th>
                     <th>Изображение</th>
+                    <th>Статус</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -50,6 +51,7 @@
                         <td><a href="{{ route('adminInterviewEdit', ['id' => $interview->id]) }}">{{ $interview->title }}</a></td>
                         <td>{{ $interview->short_content }}</td>
                         <td><img class="admin-list-image" src="{{ asset("img/interviews/{$interview->image}") }}" alt="{{ $interview->title }}" title="{{ $interview->title }}" /></td>
+                        <td>{{ $interview->status === 0 ? 'Не отображать' : 'Отображать' }}</td>
                         <td class="action-admin">
                             <a href="{{ route('adminInterviewDelete', ['id' => $interview->id]) }}" onclick="return confirm('Вы действительно хотите удалить это интервью?')"><i class="glyphicon glyphicon-remove"></i></a>
                             <a href="{{ route('adminInterviewEdit', ['id' => $interview->id]) }}"><i class="glyphicon glyphicon-edit"></i></a>

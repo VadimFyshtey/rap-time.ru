@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Cache;
 class DefaultAdminController extends Controller
 {
 
-    const PAGINATION_PAGE        = 20;
+    const PAGINATION_PAGE        = 40;
     const NEWS_IMAGE_PATH        = '/img/news/';
     const ARTIST_IMAGE_PATH      = '/img/artists/';
     const ALBUMS_IMAGE_PATH      = '/img/albums/';

@@ -26,32 +26,37 @@ class HomeController extends DefaultController
 
         $artists = Cache::remember('artistsHome', self::CACHE_TIME_ITEM, function()
         {
-            return Artist::status()->orderView()->limit(self::LIMIT_POPULAR_HOME)->get();
+            return Artist::select('id', 'nickname', 'image', 'alias')->status()->orderView()->limit(self::LIMIT_POPULAR_HOME)->get();
         });
 
         $albums = Cache::remember('albumsHome', self::CACHE_TIME_ITEM, function()
         {
-            return Album::status()->orderView()->limit(self::LIMIT_POPULAR_HOME)->get();
+            return Album::select('id', 'artist_name', 'album_name', 'image', 'alias')
+                ->status()->orderView()->limit(self::LIMIT_POPULAR_HOME)->get();
         });
 
-        $news = Cache::remember('newsHome', self::CACHE_TIME_ITEM, function()
+        $news = Cache::remember('newsHome', self::CACHE_TIME_ITEM_NEWS, function()
         {
-            return News::status()->orderCreated()->limit(self::LIMIT_POPULAR)->get();
+            return News::select('id', 'title', 'short_content', 'image', 'alias', 'view', 'rate_count', 'created_at')
+                ->status()->orderCreated()->limit(self::LIMIT_POPULAR)->get();
         });
 
         $interviews = Cache::remember('interviewsHome', self::CACHE_TIME_ITEM, function()
         {
-            return Interview::status()->orderCreated()->limit(self::LIMIT_POPULAR)->get();
+            return Interview::select('id', 'title', 'short_content', 'image', 'alias', 'view', 'rate_count')
+                ->status()->orderCreated()->limit(self::LIMIT_POPULAR)->get();
         });
 
         $articles = Cache::remember('articlesHome', self::CACHE_TIME_ITEM, function()
         {
-            return Article::status()->orderView()->limit(self::LIMIT_POPULAR)->get();
+            return Article::select('id', 'title', 'short_content', 'image', 'alias', 'view', 'rate_count')
+                ->status()->orderView()->limit(self::LIMIT_POPULAR)->get();
         });
 
         $lyrics = Cache::remember('lyricsHome', self::CACHE_TIME_ITEM, function()
         {
-            return Lyrics::status()->orderView()->limit(self::LIMIT_LYRICS)->get();
+            return Lyrics::select('id', 'artist_name', 'lyrics_name', 'alias', 'view')
+                ->status()->orderView()->limit(self::LIMIT_LYRICS)->get();
         });
 
         MetaTag::set('title', 'Rap-Time.ru | Главная страница');
@@ -114,7 +119,7 @@ class HomeController extends DefaultController
 
     public function by88()
     {
-        MetaTag::set('title', 'Rap-Time.ru | By88');
+        MetaTag::set('title', 'Rap-Time.ru | Embit88');
         MetaTag::set('description', 'Наш сайт полностью посвящен рэпу, в нас вы найдете биографии, альбомы, новости, тексты песен своих любимых реперов.');
 
         return view('layouts.components.project.by88');

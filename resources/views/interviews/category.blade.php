@@ -61,10 +61,10 @@
                 <div class="news-all">
                     @foreach($interviews as $interview)
                         <div class="news-one col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <a rel="nofollow" class="news-title" href="{{ route('interviewView', ['alias' => $interview->alias, 'id' => $interview->id]) }}" title="{{ $interview->title }}">
+                            <img class="pull-left" src="{{ asset("img/interviews/{$interview->image}") }}" alt="{{ $interview->title }}" title="{{ $interview->title }}"  />
+                            <a class="news-title" href="{{ route('interviewView', ['alias' => $interview->alias, 'id' => $interview->id]) }}" title="{{ $interview->title }}">
                                 {{ $interview->title }}
                             </a>
-                            <img class="pull-left" src="{{ asset("img/interviews/{$interview->image}") }}" alt="{{ $interview->title }}" title="{{ $interview->title }}"  />
                             <p class="short-text">
                                 {{ $interview->short_text }}
                             </p>
@@ -74,7 +74,7 @@
                             <i class="fa fas fa-heart"> {{ $interview->rate_count }}</i>
                         </span>
                             <div class="clearfix hidden-lg hidden-md hidden-sm"><br/></div>
-                            <a rel="nofollow" class="button-detail" href="{{ route('interviewView', ['alias' => $interview->alias, 'id' => $interview->id]) }}">Читать далее</a>
+                            <a class="button-detail" href="{{ route('interviewView', ['alias' => $interview->alias, 'id' => $interview->id]) }}">Читать далее</a>
                         </div>
                         <div class="clearfix"></div>
                         <hr />

@@ -39,6 +39,7 @@
                     <th>Название</th>
                     <th>Короткое описание</th>
                     <th>Изображение</th>
+                    <th>Статус</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -50,6 +51,7 @@
                         <td><a href="{{ route('adminArticleEdit', ['id' => $article->id]) }}">{{ $article->title }}</a></td>
                         <td>{{ $article->short_content }}</td>
                         <td><img class="admin-list-image" src="{{ asset("img/articles/{$article->image}") }}" alt="{{ $article->title }}" /></td>
+                        <td>{{ $article->status === 0 ? 'Не отображать' : 'Отображать' }}</td>
                         <td class="action-admin">
                             <a href="{{ route('adminArticleDelete', ['id' => $article->id]) }}" onclick="return confirm('Вы действительно хотите удалить эту статью?')"><i class="glyphicon glyphicon-remove"></i></a>
                             <a href="{{ route('adminArticleEdit', ['id' => $article->id]) }}"><i class="glyphicon glyphicon-edit"></i></a>

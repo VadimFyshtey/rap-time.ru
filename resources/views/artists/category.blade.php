@@ -42,7 +42,7 @@
                             <a rel="nofollow" href="{{ route('artistView', ['alias' => $popularArtist->alias]) }}"><?= mb_strimwidth($popularArtist->nickname , 0, 45, "...") ?></a>
                         </h5>
                         <a rel="nofollow" href="{{ route('artistView', ['alias' => $popularArtist->alias]) }}">
-                            <img src="{{ asset("img/artists/{$popularArtist->image}") }}" alt="{{ $popularArtist->nickname }}" title="{{ $popularArtist->nickname }}"  />
+                            <img src="{{ asset("img/artists/$popularArtist->image") }}" alt="{{ $popularArtist->nickname }}" title="{{ $popularArtist->nickname }}"  />
                         </a>
                         <div class="clearfix"></div>
                         <span class="detail-popul-other">
@@ -61,8 +61,8 @@
                 @foreach($artists as $artist)
                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
                         <div class="artist-one">
-                            <a rel="nofollow" href="{{ route('artistView', ['alias' => $artist->alias]) }}">
-                                <img src="{{ asset("img/artists/{$artist->image}") }}" alt="{{ $artist->nickname }}" title="{{ $artist->nickname }}"  />
+                            <a href="{{ route('artistView', ['alias' => $artist->alias]) }}">
+                                <img src="{{ asset("img/artists/$artist->image") }}" alt="{{ $artist->nickname }}" title="{{ $artist->nickname }}"  />
                             </a>
                             <div>
                                 <span class="detail-other detail-other-info pull-left">

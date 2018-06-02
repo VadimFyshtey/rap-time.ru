@@ -28,9 +28,9 @@
                     <h3>Популярные статьи</h3>
                     @foreach($popularArticles as $popular)
                         <h5>
-                            <a rel="nofollow" href="{{ route('articleView', ['alias' => $popular->alias, 'id' => $popular->id]) }}"><?= mb_strimwidth($popular->title , 0, 45, "...") ?></a>
+                            <a href="{{ route('articleView', ['alias' => $popular->alias, 'id' => $popular->id]) }}"><?= mb_strimwidth($popular->title , 0, 45, "...") ?></a>
                         </h5>
-                        <a rel="nofollow" href="{{ route('articleView', ['alias' => $popular->alias, 'id' => $popular->id]) }}">
+                        <a href="{{ route('articleView', ['alias' => $popular->alias, 'id' => $popular->id]) }}">
                             <img src="{{ asset("img/articles/{$popular->image}") }}" alt="{{ $popular->title }}" title="{{ $popular->title }}"  />
                         </a>
                         <div class="clearfix"></div>
@@ -50,10 +50,10 @@
                 <div class="news-all">
                 @foreach($articles as $article)
                     <div class="news-one col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <a rel="nofollow" class="news-title" href="{{ route('articleView', ['alias' => $article->alias, 'id' => $article->id]) }}" title="{{ $article->title }}">
+                        <img class="pull-left" src="{{ asset("img/articles/{$article->image}") }}" alt="{{ $article->title }}" title="{{ $article->title }}"  />
+                        <a class="news-title" href="{{ route('articleView', ['alias' => $article->alias, 'id' => $article->id]) }}" title="{{ $article->title }}">
                             {{ $article->title }}
                         </a>
-                        <img class="pull-left" src="{{ asset("img/articles/{$article->image}") }}" alt="{{ $article->title }}" title="{{ $article->title }}"  />
                         <p class="short-text">
                             {{ $article->short_content }}
                         </p>
@@ -63,7 +63,7 @@
                             <i class="fa fas fa-heart"> {{ $article->rate_count }}</i>
                         </span>
                         <div class="clearfix hidden-lg hidden-md hidden-sm"><br/></div>
-                        <a rel="nofollow" class="button-detail" href="{{ route('articleView', ['alias' => $article->alias, 'id' => $article->id]) }}">Читать далее</a>
+                        <a class="button-detail" href="{{ route('articleView', ['alias' => $article->alias, 'id' => $article->id]) }}">Читать далее</a>
                     </div>
                     <div class="clearfix"></div>
                     <hr />

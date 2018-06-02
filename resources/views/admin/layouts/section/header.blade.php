@@ -19,7 +19,7 @@
 
 <header class="main-header">
 
-    <a href="{{ route('adminDashboardIndex') }}" class="logo">
+    <a href="{{ route('home') }}" class="logo" rel="nofollow" target="_blank">
         <span class="logo-mini"><b>RT</b></span>
         <span class="logo-lg"><b>Rap-Time</b></span>
     </a>
