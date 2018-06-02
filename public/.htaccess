@@ -22,8 +22,11 @@
     RewriteCond %{HTTP_HOST} ^www\.(.*)$
     RewriteRule ^(.*)$ http://%1/$1 [L,R=301]
 
-    RewriteCond %{SERVER_PORT} !^443$
-    RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
+    RewriteEngine on
+    RewriteCond %{HTTP_HOST} rap-time\.ru [NC]
+    RewriteCond %{HTTP:X-Forwarded-Proto} ^http$
+    RewriteCond %{HTTPS} off
+    RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
     RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
     RewriteRule ^index\.php$ https://rap-time.ru/ [R=301,L]

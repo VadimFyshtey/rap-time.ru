@@ -3,6 +3,14 @@ Disallow: /*?
 Disallow: /*&
 Disallow: /*=
 
+Disallow: *?
+Disallow: *&
+Disallow: *=
+
+Disallow: ?*
+Disallow: &*
+Disallow: =*
+
 Disallow: /admin
 Disallow: /admin/*
 
@@ -17,6 +25,9 @@ Disallow: /resources/views/admin
 Disallow: /storage
 Disallow: /test
 Disallow: /vendor
+Disallow: /public
+Disallow: /public/*
+Disallow: /img
 
 Host: https://rap-time.ru/
 Sitemap: https://rap-time.ru/sitemap.xml

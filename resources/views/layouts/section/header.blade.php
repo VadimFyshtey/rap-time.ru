@@ -17,6 +17,23 @@
     <script src="{{ asset('js/ie.js') }}" defer></script>
     <![endif]-->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-2586863288185463",
+            enable_page_level_ads: true
+        });
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102624075-5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-102624075-5');
+    </script>
+
 </head>
 <body>
 <div id="load"></div>

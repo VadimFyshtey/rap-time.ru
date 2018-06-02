@@ -99,9 +99,27 @@
                     @endif
                     <div class="clearfix"></div>
                     <h2>{{ $artist->nickname }} - биография</h2>
+                    <!-- rap-time reklama -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-2586863288185463"
+                         data-ad-slot="2078150076"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                     <div class="full-content">
                         {!! $artist->biography !!}
                     </div>
+                    <!-- rap-time reklama -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-2586863288185463"
+                         data-ad-slot="2078150076"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                     <br />
                     @if(Auth::check() && (Auth::user()->role_id === 1 || Auth::user()->role_id === 2))
                         <div class="clearfix"></div>
@@ -221,6 +239,15 @@
                 @endif
                     <div class="col-lg-12 col-md-12 com-sm-12 col-xs-12 artist-view-sidebar artist-view-sidebar-article artist-view-sidebar-text pull-right">
                         <h3>Реклама</h3>
+                        <!-- rap-time reklama -->
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-2586863288185463"
+                             data-ad-slot="2078150076"
+                             data-ad-format="auto"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
                     </div>
                 </div>
             </div>

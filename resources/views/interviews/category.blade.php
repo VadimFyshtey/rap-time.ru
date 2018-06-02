@@ -55,10 +55,28 @@
                 </div>
                 <div class="news-sidebar hidden-sm hidden-xs">
                     <h3>Реклама</h3>
+                    <!-- rap-time reklama -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-2586863288185463"
+                         data-ad-slot="2078150076"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                 </div>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                 <div class="news-all">
+                    <!-- rap-time reklama -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-2586863288185463"
+                         data-ad-slot="2078150076"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                     @foreach($interviews as $interview)
                         <div class="news-one col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <img class="pull-left" src="{{ asset("img/interviews/{$interview->image}") }}" alt="{{ $interview->title }}" title="{{ $interview->title }}"  />
@@ -79,6 +97,15 @@
                         <div class="clearfix"></div>
                         <hr />
                     @endforeach
+                    <!-- rap-time reklama -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-2586863288185463"
+                         data-ad-slot="2078150076"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                         <div class="clearfix"></div>
                         <div class="my-pagination">
                             {{  $interviews->render() }}

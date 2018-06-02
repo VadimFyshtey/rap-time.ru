@@ -35,10 +35,28 @@
                 </div>
                 <div class="lyrics-sidebar hidden-sm hidden-xs">
                     <h3>Реклама</h3>
+                    <!-- rap-time reklama -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-2586863288185463"
+                         data-ad-slot="2078150076"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                 </div>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                 <div class="lyrics-all">
+                    <!-- rap-time reklama -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-2586863288185463"
+                         data-ad-slot="2078150076"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                     @foreach($artistLyrics->lyrics as $lyric)
                         <div class="lyrics-one col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <a class="lyrics-title" href="{{ route('lyricsView', ['alias' => $lyric->alias, 'id' => $lyric->id]) }}" title="{{ $lyric->artist_name }} - {{ $lyric->lyrics_name }}">
@@ -56,6 +74,15 @@
                         <div class="clearfix"></div>
                         <hr />
                     @endforeach
+                    <!-- rap-time reklama -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-2586863288185463"
+                         data-ad-slot="2078150076"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                         <div class="clearfix"></div>
                         <div class="my-pagination">
                             {{ $artistLyrics->lyrics()->paginate($limit)->render() }}

@@ -49,6 +49,16 @@
                         </span>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 full-content">
+                        <!-- rap-time reklama -->
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-2586863288185463"
+                             data-ad-slot="2078150076"
+                             data-ad-format="auto"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                        <br/>
                         {!! $news->full_content !!}
                     </div>
                     @if(count($news->tags) > 0)
@@ -61,6 +71,15 @@
                         </div>
                     @endif
                     <div class="clearfix"></div>
+                    <!-- rap-time reklama -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-2586863288185463"
+                         data-ad-slot="2078150076"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                     <hr />
                     <div class="other-item">
                         <p>Возможно Вам будет интересно:</p>
@@ -143,6 +162,15 @@
                     <div class="clearfix"></div>
                     <div class="col-lg-12 col-md-12 news-view-sidebar hidden-sm hidden-xs pull-right">
                         <h3>Реклама</h3>
+                        <!-- rap-time reklama -->
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-2586863288185463"
+                             data-ad-slot="2078150076"
+                             data-ad-format="auto"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
                     </div>
                 </div>
             </div>

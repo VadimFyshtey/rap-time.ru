@@ -49,9 +49,28 @@
                         </span>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 full-content">
+                        <!-- rap-time reklama -->
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-2586863288185463"
+                             data-ad-slot="2078150076"
+                             data-ad-format="auto"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                        <br />
                         {!! $interview->full_content !!}
                     </div>
                     <div class="clearfix"></div>
+                    <!-- rap-time reklama -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-2586863288185463"
+                         data-ad-slot="2078150076"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                     <hr />
                     <div class="other-item">
                         <p>Возможно Вам будет интересно:</p>

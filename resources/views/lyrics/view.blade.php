@@ -13,7 +13,15 @@
                 <div class="clearfix"></div>
                 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 lyrics-view-block">
                     <h1>{{ $lyrics->artist_name }} - {{ $lyrics->lyrics_name }}</h1>
-
+                    <!-- rap-time reklama -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-2586863288185463"
+                         data-ad-slot="2078150076"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                     <div class="{{ $lyrics->translate === null ? 'col-lg-12 col-md-12' : 'col-lg-6 col-md-6' }} col-sm-12 col-xs-12 pull-left lyrics-text">
                         <div class="{{ $lyrics->translate === null ? 'lyrics-text-detail' : '' }}">
                             <h2>Текст песни: {{ $lyrics->artist_name }} - {{ $lyrics->lyrics_name }}</h2>
@@ -34,6 +42,16 @@
                         {!! $lyrics->video_url !!}
                     </div>
                     @endif
+
+                    <!-- rap-time reklama -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-2586863288185463"
+                         data-ad-slot="2078150076"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                     <div class="clearfix"></div>
                     <hr />
                     <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 ">

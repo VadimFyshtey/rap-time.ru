@@ -49,6 +49,16 @@
                         </span>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 full-content">
+                        <!-- rap-time reklama -->
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-2586863288185463"
+                             data-ad-slot="2078150076"
+                             data-ad-format="auto"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                        <br />
                         {!! $album->full_content !!}
                     </div>
                     <div class="clearfix"></div>
@@ -62,8 +72,16 @@
                             <a href="{{ $album->link_second }}" class="button-save" rel="nofollow" target="_blank">Скачать #2</a>
                         @endif
                         <div class="clearfix"></div>
-                        <br />
                     </div>
+                    <!-- rap-time reklama -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-2586863288185463"
+                         data-ad-slot="2078150076"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                     <hr />
                     <div class="other-item">
                         <p>Возможно Вам будет интересно:</p>
@@ -146,6 +164,15 @@
                     <div class="clearfix"></div>
                     <div class="col-lg-12 col-md-12 news-view-sidebar hidden-sm hidden-xs pull-right">
                         <h3>Реклама</h3>
+                        <!-- rap-time reklama -->
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-2586863288185463"
+                             data-ad-slot="2078150076"
+                             data-ad-format="auto"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
                     </div>
                 </div>
             </div>
