@@ -58,6 +58,7 @@
                     </div>
                     <br />
                 </div>
+                <div class="clearfix"></div>
                 <!-- rap-time reklama -->
                 <ins class="adsbygoogle"
                      style="display:block"
@@ -67,6 +68,7 @@
                 <script>
                     (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
+                <div class="clearfix"></div>
                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 last-active">
                     <h3>Последняя активность</h3>
                     @if(count($user->ratingArtists) >= 1)
@@ -217,6 +219,7 @@
                 <div class="clearfix"></div>
             </section>
         </div>
+        <div class="clearfix"></div>
         <!-- rap-time reklama -->
         <ins class="adsbygoogle"
              style="display:block"
@@ -226,6 +229,7 @@
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
+        <div class="clearfix"></div>
     </div>
 @show
 

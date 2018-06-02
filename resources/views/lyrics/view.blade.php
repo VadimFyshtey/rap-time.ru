@@ -22,6 +22,7 @@
                     <script>
                         (adsbygoogle = window.adsbygoogle || []).push({});
                     </script>
+                    <br />
                     <div class="{{ $lyrics->translate === null ? 'col-lg-12 col-md-12' : 'col-lg-6 col-md-6' }} col-sm-12 col-xs-12 pull-left lyrics-text">
                         <div class="{{ $lyrics->translate === null ? 'lyrics-text-detail' : '' }}">
                             <h2>Текст песни: {{ $lyrics->artist_name }} - {{ $lyrics->lyrics_name }}</h2>
@@ -42,7 +43,8 @@
                         {!! $lyrics->video_url !!}
                     </div>
                     @endif
-
+                    <div class="clearfix"></div>
+                    <hr />
                     <!-- rap-time reklama -->
                     <ins class="adsbygoogle"
                          style="display:block"
@@ -52,8 +54,6 @@
                     <script>
                         (adsbygoogle = window.adsbygoogle || []).push({});
                     </script>
-                    <div class="clearfix"></div>
-                    <hr />
                     <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 ">
                         <span class="detail-other-view pull-left">
                             <i class="fa fas fa-heart"> {{ $lyrics->rate_count }}</i>

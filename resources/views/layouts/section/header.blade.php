@@ -33,7 +33,7 @@
 
         gtag('config', 'UA-102624075-5');
     </script>
-
+    <meta name="yandex-verification" content="cd3c5428a6c76383" />
 </head>
 <body>
 <div id="load"></div>
