@@ -164,6 +164,7 @@
                     <div class="clearfix"></div>
                     <div class="col-lg-12 col-md-12 news-view-sidebar hidden-sm hidden-xs pull-right">
                         <h3>Реклама</h3>
+                        <br />
                         <!-- rap-time reklama -->
                         <ins class="adsbygoogle"
                              style="display:block"
@@ -173,6 +174,17 @@
                         <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                         </script>
+                        <br />
+                        <!-- rap-time reklama -->
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-2586863288185463"
+                             data-ad-slot="2078150076"
+                             data-ad-format="auto"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                        <br />
                     </div>
                 </div>
             </div>

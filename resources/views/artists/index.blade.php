@@ -51,6 +51,7 @@
                 </div>
                 <div class="artists-sidebar hidden-sm hidden-xs">
                     <h3>Реклама</h3>
+                    <br />
                     <!-- rap-time reklama -->
                     <ins class="adsbygoogle"
                          style="display:block"
@@ -60,6 +61,17 @@
                     <script>
                         (adsbygoogle = window.adsbygoogle || []).push({});
                     </script>
+                    <br />
+                    <!-- rap-time reklama -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-2586863288185463"
+                         data-ad-slot="2078150076"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                    <br />
                 </div>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
