@@ -6,6 +6,16 @@
         <div class="col-lg-12">
             <section class="profile-list">
                 <h3>Профиль пользователя: {{ $user->name ? $user->name : $user->email }}</h3>
+                <br />
+                <!-- rap-time reklama -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-2586863288185463"
+                     data-ad-slot="2078150076"
+                     data-ad-format="auto"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
                 @if($user->is_banned === 1)
                     <p class="no-auth-comment"> Вы забанены!
                         <a href="#" rel="nofollow" data-toggle="modal" data-target="#modal-contact">Напишите администрации</a>
@@ -58,17 +68,6 @@
                     </div>
                     <br />
                 </div>
-                <div class="clearfix"></div>
-                <!-- rap-time reklama -->
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-2586863288185463"
-                     data-ad-slot="2078150076"
-                     data-ad-format="auto"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-                <div class="clearfix"></div>
                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 last-active">
                     <h3>Последняя активность</h3>
                     @if(count($user->ratingArtists) >= 1)
@@ -215,21 +214,19 @@
                             <div class="clearfix"></div>
                         @endforeach
                     @endif
+                    <!-- rap-time reklama -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-2586863288185463"
+                         data-ad-slot="2078150076"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                 </div>
                 <div class="clearfix"></div>
             </section>
         </div>
-        <div class="clearfix"></div>
-        <!-- rap-time reklama -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-2586863288185463"
-             data-ad-slot="2078150076"
-             data-ad-format="auto"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-        <div class="clearfix"></div>
     </div>
 @show
 
