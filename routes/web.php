@@ -3,6 +3,13 @@
 // Home
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home']);
 
+// News
+Route::get('/news/tag/{tag}', ['uses' => 'NewsController@tags', 'as' => 'newsTags']);
+Route::get('/news/search', ['uses' => 'NewsController@search', 'as' => 'newsSearch']);
+Route::get('/news/{alias}/{id}', ['uses' => 'NewsController@view', 'as' => 'newsView']);
+Route::get('/news/{sort?}/{by?}', ['uses' => 'NewsController@index', 'as' => 'newsIndex']);
+Route::get('/news/category/{alias}/{id}/{sort?}/{by?}', ['uses' => 'NewsController@category', 'as' => 'newsCategory']);
+
 // Artists
 Route::get('/artist/{alias}', ['uses' => 'ArtistsController@view', 'as' => 'artistView']);
 Route::get('/artists/search', ['uses' => 'ArtistsController@search', 'as' => 'artistSearch']);
@@ -12,13 +19,6 @@ Route::get('/artists/news/{alias}', ['uses' => 'ArtistsController@artistNews', '
 Route::get('/artists/lyrics/{alias}', ['uses' => 'ArtistsController@artistLyrics', 'as' => 'artistLyrics']);
 Route::get('/artists/{sort?}/{by?}', ['uses' => 'ArtistsController@index', 'as' => 'artistIndex']);
 Route::get('/artists/category/{alias}/{id}/{sort?}/{by?}', ['uses' => 'ArtistsController@category', 'as' => 'artistCategory']);
-
-// News
-Route::get('/news/tag/{tag}', ['uses' => 'NewsController@tags', 'as' => 'newsTags']);
-Route::get('/news/search', ['uses' => 'NewsController@search', 'as' => 'newsSearch']);
-Route::get('/news/{alias}/{id}', ['uses' => 'NewsController@view', 'as' => 'newsView']);
-Route::get('/news/{sort?}/{by?}', ['uses' => 'NewsController@index', 'as' => 'newsIndex']);
-Route::get('/news/category/{alias}/{id}/{sort?}/{by?}', ['uses' => 'NewsController@category', 'as' => 'newsCategory']);
 
 // Interviews
 Route::get('/interview/{alias}/{id}', ['uses' => 'InterviewsController@view', 'as' => 'interviewView']);

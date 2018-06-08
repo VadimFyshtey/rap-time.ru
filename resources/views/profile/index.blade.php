@@ -7,15 +7,15 @@
             <section class="profile-list">
                 <h3>Профиль пользователя: {{ $user->name ? $user->name : $user->email }}</h3>
                 <br />
-                <!-- rap-time reklama -->
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-2586863288185463"
-                     data-ad-slot="2078150076"
-                     data-ad-format="auto"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+                {{--<!-- rap-time reklama -->--}}
+                {{--<ins class="adsbygoogle"--}}
+                     {{--style="display:block"--}}
+                     {{--data-ad-client="ca-pub-2586863288185463"--}}
+                     {{--data-ad-slot="2078150076"--}}
+                     {{--data-ad-format="auto"></ins>--}}
+                {{--<script>--}}
+                    {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                {{--</script>--}}
                 @if($user->is_banned === 1)
                     <p class="no-auth-comment"> Вы забанены!
                         <a href="#" rel="nofollow" data-toggle="modal" data-target="#modal-contact">Напишите администрации</a>
@@ -217,15 +217,6 @@
                 </div>
                 <div class="clearfix"></div>
             </section>
-            <!-- rap-time reklama -->
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-2586863288185463"
-                 data-ad-slot="2078150076"
-                 data-ad-format="auto"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
         </div>
     </div>
 @show

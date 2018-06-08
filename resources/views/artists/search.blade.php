@@ -6,11 +6,32 @@
         <section class="artists-list">
             <h1>Поиск по исполнителям: {{ $q }}</h1>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="breadcrumb-block">
+                <div class="breadcrumb-block" itemscope="" itemtype="http://schema.org/BreadcrumbList">
                     <ol class="breadcrumb pull-left">
-                        <li><a href="{{ route('home') }}">Главная</a></li>
-                        <li><a href="{{ route('artistIndex') }}">Исполнители</a></li>
-                        <li class="active">{{ $q }}</li>
+                        <li>
+                            <span itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a itemprop="item" title="Главная" href="{{ route('home') }}">
+                                    <span itemprop="name">Главная</span>
+                                    <meta itemprop="position" content="1">
+                                </a>
+                            </span>
+                        </li>
+                        <li>
+                            <span itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a itemprop="item" title="Исполнители" href="{{ route('artistIndex') }}">
+                                    <span itemprop="name">Исполнители</span>
+                                    <meta itemprop="position" content="2">
+                                </a>
+                            </span>
+                        </li>
+                        <li class="active">
+                            <span itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a rel="nofollow" itemprop="item" title="{{ $q }}">
+                                    <span itemprop="name">{{ $q }}</span>
+                                    <meta itemprop="position" content="3">
+                                </a>
+                            </span>
+                        </li>
                     </ol>
                 </div>
             </div>
@@ -51,39 +72,39 @@
                 </div>
                 <div class="artists-sidebar hidden-sm hidden-xs">
                     <h3>Реклама</h3>
-                    <br />
-                    <!-- rap-time reklama -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2586863288185463"
-                         data-ad-slot="2078150076"
-                         data-ad-format="auto"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                    <br />
-                    <!-- rap-time reklama -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2586863288185463"
-                         data-ad-slot="2078150076"
-                         data-ad-format="auto"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                    <br />
+                    {{--<br />--}}
+                    {{--<!-- rap-time reklama -->--}}
+                    {{--<ins class="adsbygoogle"--}}
+                         {{--style="display:block"--}}
+                         {{--data-ad-client="ca-pub-2586863288185463"--}}
+                         {{--data-ad-slot="2078150076"--}}
+                         {{--data-ad-format="auto"></ins>--}}
+                    {{--<script>--}}
+                        {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                    {{--</script>--}}
+                    {{--<br />--}}
+                    {{--<!-- rap-time reklama -->--}}
+                    {{--<ins class="adsbygoogle"--}}
+                         {{--style="display:block"--}}
+                         {{--data-ad-client="ca-pub-2586863288185463"--}}
+                         {{--data-ad-slot="2078150076"--}}
+                         {{--data-ad-format="auto"></ins>--}}
+                    {{--<script>--}}
+                        {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                    {{--</script>--}}
+                    {{--<br />--}}
                 </div>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-                <!-- rap-time reklama -->
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-2586863288185463"
-                     data-ad-slot="2078150076"
-                     data-ad-format="auto"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+                {{--<!-- rap-time reklama -->--}}
+                {{--<ins class="adsbygoogle"--}}
+                     {{--style="display:block"--}}
+                     {{--data-ad-client="ca-pub-2586863288185463"--}}
+                     {{--data-ad-slot="2078150076"--}}
+                     {{--data-ad-format="auto"></ins>--}}
+                {{--<script>--}}
+                    {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                {{--</script>--}}
                 @if(count($artists) >= 1)
                 @foreach($artists as $artist)
                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
@@ -129,15 +150,15 @@
                 @else
                     <h5 class="text-search">Поиск не дал результатов.</h5>
                 @endif
-                <!-- rap-time reklama -->
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-2586863288185463"
-                     data-ad-slot="2078150076"
-                     data-ad-format="auto"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+                {{--<!-- rap-time reklama -->--}}
+                {{--<ins class="adsbygoogle"--}}
+                     {{--style="display:block"--}}
+                     {{--data-ad-client="ca-pub-2586863288185463"--}}
+                     {{--data-ad-slot="2078150076"--}}
+                     {{--data-ad-format="auto"></ins>--}}
+                {{--<script>--}}
+                    {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                {{--</script>--}}
             </div>
             <div class="clearfix"></div>
         </section>

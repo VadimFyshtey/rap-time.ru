@@ -6,10 +6,24 @@
         <section class="artists-list">
             <h1>Рэп исполнители</h1>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="breadcrumb-block">
+                <div class="breadcrumb-block" itemscope="" itemtype="http://schema.org/BreadcrumbList">
                     <ol class="breadcrumb pull-left">
-                        <li><a href="{{ route('home') }}">Главная</a></li>
-                        <li class="active">Исполнители</li>
+                        <li>
+                            <span itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a itemprop="item" title="Главная" href="{{ route('home') }}">
+                                    <span itemprop="name">Главная</span>
+                                    <meta itemprop="position" content="1">
+                                </a>
+                            </span>
+                        </li>
+                        <li class="active">
+                            <span itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a rel="nofollow" itemprop="item" title="Исполнители">
+                                    <span itemprop="name">Исполнители</span>
+                                    <meta itemprop="position" content="2">
+                                </a>
+                            </span>
+                        </li>
                     </ol>
                     @include('layouts.components.sort')
                 </div>
@@ -35,7 +49,7 @@
                     <h3>Популярные рэперы</h3>
                     @foreach($popularArtists as $popularArtist)
                         <h5>
-                            <a rel="nofollow" href="{{ route('artistView', ['alias' => $popularArtist->alias]) }}"><?= mb_strimwidth($popularArtist->nickname , 0, 45, "...") ?></a>
+                            <a href="{{ route('artistView', ['alias' => $popularArtist->alias]) }}"><?= mb_strimwidth($popularArtist->nickname , 0, 45, "...") ?></a>
                         </h5>
                         <a rel="nofollow" href="{{ route('artistView', ['alias' => $popularArtist->alias]) }}">
                             <img src="{{ asset("img/artists/{$popularArtist->image}") }}" alt="{{ $popularArtist->nickname }}" title="{{ $popularArtist->nickname }}"  />
@@ -51,39 +65,39 @@
                 </div>
                 <div class="artists-sidebar hidden-sm hidden-xs">
                     <h3>Реклама</h3>
-                    <br />
-                    <!-- rap-time reklama -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2586863288185463"
-                         data-ad-slot="2078150076"
-                         data-ad-format="auto"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                    <br />
-                    <!-- rap-time reklama -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2586863288185463"
-                         data-ad-slot="2078150076"
-                         data-ad-format="auto"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                    <br />
+                    {{--<br />--}}
+                    {{--<!-- rap-time reklama -->--}}
+                    {{--<ins class="adsbygoogle"--}}
+                         {{--style="display:block"--}}
+                         {{--data-ad-client="ca-pub-2586863288185463"--}}
+                         {{--data-ad-slot="2078150076"--}}
+                         {{--data-ad-format="auto"></ins>--}}
+                    {{--<script>--}}
+                        {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                    {{--</script>--}}
+                    {{--<br />--}}
+                    {{--<!-- rap-time reklama -->--}}
+                    {{--<ins class="adsbygoogle"--}}
+                         {{--style="display:block"--}}
+                         {{--data-ad-client="ca-pub-2586863288185463"--}}
+                         {{--data-ad-slot="2078150076"--}}
+                         {{--data-ad-format="auto"></ins>--}}
+                    {{--<script>--}}
+                        {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                    {{--</script>--}}
+                    {{--<br />--}}
                 </div>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-                <!-- rap-time reklama -->
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-2586863288185463"
-                     data-ad-slot="2078150076"
-                     data-ad-format="auto"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+                {{--<!-- rap-time reklama -->--}}
+                {{--<ins class="adsbygoogle"--}}
+                     {{--style="display:block"--}}
+                     {{--data-ad-client="ca-pub-2586863288185463"--}}
+                     {{--data-ad-slot="2078150076"--}}
+                     {{--data-ad-format="auto"></ins>--}}
+                {{--<script>--}}
+                    {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                {{--</script>--}}
             @foreach($artists as $artist)
                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
                     <div class="artist-one">
@@ -120,15 +134,15 @@
                     </div>
                 </div>
             @endforeach
-                <!-- rap-time reklama -->
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-2586863288185463"
-                     data-ad-slot="2078150076"
-                     data-ad-format="auto"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+                {{--<!-- rap-time reklama -->--}}
+                {{--<ins class="adsbygoogle"--}}
+                     {{--style="display:block"--}}
+                     {{--data-ad-client="ca-pub-2586863288185463"--}}
+                     {{--data-ad-slot="2078150076"--}}
+                     {{--data-ad-format="auto"></ins>--}}
+                {{--<script>--}}
+                    {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                {{--</script>--}}
                 <div class="clearfix"></div>
                 <div class="my-pagination">
                     <hr />

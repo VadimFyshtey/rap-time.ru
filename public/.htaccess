@@ -31,6 +31,9 @@
     RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
     RewriteRule ^index\.php$ https://rap-time.ru/ [R=301,L]
 
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
+    RewriteRule ^index\.php$ https://rap-time.ru/ [R=301,L]
+
     RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /web\.config\ HTTP/
     RewriteRule ^web\.config https://rap-time.ru/ [R=301,L]
 

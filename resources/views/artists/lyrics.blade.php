@@ -6,11 +6,32 @@
         <section class="lyrics-list">
             <h1>{{ $artistLyrics->nickname }} - Тексты песен</h1>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="breadcrumb-block">
+                <div class="breadcrumb-block" itemscope="" itemtype="http://schema.org/BreadcrumbList">
                     <ol class="breadcrumb pull-left">
-                        <li><a href="{{ route('home') }}">Главная</a></li>
-                        <li><a href="{{ route('artistView', ['alias' => $artistLyrics->alias]) }}">{{ $artistLyrics->nickname }}</a></li>
-                        <li class="active">Все тексты песен</li>
+                        <li>
+                            <span itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a itemprop="item" title="Главная" href="{{ route('home') }}">
+                                    <span itemprop="name">Главная</span>
+                                    <meta itemprop="position" content="1">
+                                </a>
+                            </span>
+                        </li>
+                        <li>
+                            <span itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a itemprop="item" title="{{ $artistLyrics->nickname }}" href="{{ route('artistView', ['alias' => $artistLyrics->alias]) }}">
+                                    <span itemprop="name">{{ $artistLyrics->nickname }}</span>
+                                    <meta itemprop="position" content="2">
+                                </a>
+                            </span>
+                        </li>
+                        <li class="active">
+                            <span itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a rel="nofollow" itemprop="item" title="Все тексты песен">
+                                    <span itemprop="name">Все тексты песен</span>
+                                    <meta itemprop="position" content="3">
+                                </a>
+                            </span>
+                        </li>
                     </ol>
                 </div>
             </div>
@@ -20,7 +41,7 @@
                     <h3>Популярные песни</h3>
                     @foreach($popularLyrics as $popular)
                         <h5>
-                            <a rel="nofollow" href="{{ route('lyricsView', ['alias' => $popular->alias, 'id' => $popular->id]) }}">
+                            <a href="{{ route('lyricsView', ['alias' => $popular->alias, 'id' => $popular->id]) }}">
                                 <?= mb_strimwidth($popular->artist_name . ' - ' . $popular->lyrics_name , 0, 55, "...") ?>
                             </a>
                         </h5>
@@ -35,40 +56,40 @@
                 </div>
                 <div class="lyrics-sidebar hidden-sm hidden-xs">
                     <h3>Реклама</h3>
-                    <br />
-                    <!-- rap-time reklama -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2586863288185463"
-                         data-ad-slot="2078150076"
-                         data-ad-format="auto"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                    <br />
-                    <!-- rap-time reklama -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2586863288185463"
-                         data-ad-slot="2078150076"
-                         data-ad-format="auto"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                    <br />
+                    {{--<br />--}}
+                    {{--<!-- rap-time reklama -->--}}
+                    {{--<ins class="adsbygoogle"--}}
+                         {{--style="display:block"--}}
+                         {{--data-ad-client="ca-pub-2586863288185463"--}}
+                         {{--data-ad-slot="2078150076"--}}
+                         {{--data-ad-format="auto"></ins>--}}
+                    {{--<script>--}}
+                        {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                    {{--</script>--}}
+                    {{--<br />--}}
+                    {{--<!-- rap-time reklama -->--}}
+                    {{--<ins class="adsbygoogle"--}}
+                         {{--style="display:block"--}}
+                         {{--data-ad-client="ca-pub-2586863288185463"--}}
+                         {{--data-ad-slot="2078150076"--}}
+                         {{--data-ad-format="auto"></ins>--}}
+                    {{--<script>--}}
+                        {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                    {{--</script>--}}
+                    {{--<br />--}}
                 </div>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                 <div class="lyrics-all">
-                    <!-- rap-time reklama -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2586863288185463"
-                         data-ad-slot="2078150076"
-                         data-ad-format="auto"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                    {{--<!-- rap-time reklama -->--}}
+                    {{--<ins class="adsbygoogle"--}}
+                         {{--style="display:block"--}}
+                         {{--data-ad-client="ca-pub-2586863288185463"--}}
+                         {{--data-ad-slot="2078150076"--}}
+                         {{--data-ad-format="auto"></ins>--}}
+                    {{--<script>--}}
+                        {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                    {{--</script>--}}
                     @foreach($artistLyrics->lyrics as $lyric)
                         <div class="lyrics-one col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <a class="lyrics-title" href="{{ route('lyricsView', ['alias' => $lyric->alias, 'id' => $lyric->id]) }}" title="{{ $lyric->artist_name }} - {{ $lyric->lyrics_name }}">
@@ -86,15 +107,15 @@
                         <div class="clearfix"></div>
                         <hr />
                     @endforeach
-                    <!-- rap-time reklama -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2586863288185463"
-                         data-ad-slot="2078150076"
-                         data-ad-format="auto"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                    {{--<!-- rap-time reklama -->--}}
+                    {{--<ins class="adsbygoogle"--}}
+                         {{--style="display:block"--}}
+                         {{--data-ad-client="ca-pub-2586863288185463"--}}
+                         {{--data-ad-slot="2078150076"--}}
+                         {{--data-ad-format="auto"></ins>--}}
+                    {{--<script>--}}
+                        {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                    {{--</script>--}}
                         <div class="clearfix"></div>
                         <div class="my-pagination">
                             {{ $artistLyrics->lyrics()->paginate($limit)->render() }}

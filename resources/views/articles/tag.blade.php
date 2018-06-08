@@ -6,11 +6,32 @@
         <section class="news-list">
             <h1>Статьи по тегу: {{ $tag }}</h1>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="breadcrumb-block">
+                <div class="breadcrumb-block" itemscope="" itemtype="http://schema.org/BreadcrumbList">
                     <ol class="breadcrumb pull-left">
-                        <li><a href="{{ route('home') }}">Главная</a></li>
-                        <li><a href="{{ route('articleIndex') }}">Статьи</a></li>
-                        <li class="active">{{ $tag }}</li>
+                        <li>
+                            <span itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a itemprop="item" title="Главная" href="{{ route('home') }}">
+                                    <span itemprop="name">Главная</span>
+                                    <meta itemprop="position" content="1">
+                                </a>
+                            </span>
+                        </li>
+                        <li>
+                            <span itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a itemprop="item" title="Статьи" href="{{ route('articleIndex') }}">
+                                    <span itemprop="name">Статьи</span>
+                                    <meta itemprop="position" content="2">
+                                </a>
+                            </span>
+                        </li>
+                        <li class="active">
+                            <span itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a rel="nofollow" itemprop="item" title="{{ $tag }}">
+                                    <span itemprop="name">{{ $tag }}</span>
+                                    <meta itemprop="position" content="3">
+                                </a>
+                            </span>
+                        </li>
                     </ol>
                 </div>
             </div>
@@ -30,7 +51,7 @@
                         <h5>
                             <a href="{{ route('articleView', ['alias' => $popular->alias, 'id' => $popular->id]) }}"><?= mb_strimwidth($popular->title , 0, 45, "...") ?></a>
                         </h5>
-                        <a href="{{ route('articleView', ['alias' => $popular->alias, 'id' => $popular->id]) }}">
+                        <a rel="nofollow" href="{{ route('articleView', ['alias' => $popular->alias, 'id' => $popular->id]) }}">
                             <img src="{{ asset("img/articles/{$popular->image}") }}" alt="{{ $popular->title }}" title="{{ $popular->title }}"  />
                         </a>
                         <div class="clearfix"></div>
@@ -44,40 +65,40 @@
                 </div>
                 <div class="news-sidebar hidden-sm hidden-xs">
                     <h3>Реклама</h3>
-                    <br />
-                    <!-- rap-time reklama -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2586863288185463"
-                         data-ad-slot="2078150076"
-                         data-ad-format="auto"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                    <br />
-                    <!-- rap-time reklama -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2586863288185463"
-                         data-ad-slot="2078150076"
-                         data-ad-format="auto"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                    <br />
+                    {{--<br />--}}
+                    {{--<!-- rap-time reklama -->--}}
+                    {{--<ins class="adsbygoogle"--}}
+                         {{--style="display:block"--}}
+                         {{--data-ad-client="ca-pub-2586863288185463"--}}
+                         {{--data-ad-slot="2078150076"--}}
+                         {{--data-ad-format="auto"></ins>--}}
+                    {{--<script>--}}
+                        {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                    {{--</script>--}}
+                    {{--<br />--}}
+                    {{--<!-- rap-time reklama -->--}}
+                    {{--<ins class="adsbygoogle"--}}
+                         {{--style="display:block"--}}
+                         {{--data-ad-client="ca-pub-2586863288185463"--}}
+                         {{--data-ad-slot="2078150076"--}}
+                         {{--data-ad-format="auto"></ins>--}}
+                    {{--<script>--}}
+                        {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                    {{--</script>--}}
+                    {{--<br />--}}
                 </div>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                 <div class="news-all">
-                    <!-- rap-time reklama -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2586863288185463"
-                         data-ad-slot="2078150076"
-                         data-ad-format="auto"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                    {{--<!-- rap-time reklama -->--}}
+                    {{--<ins class="adsbygoogle"--}}
+                         {{--style="display:block"--}}
+                         {{--data-ad-client="ca-pub-2586863288185463"--}}
+                         {{--data-ad-slot="2078150076"--}}
+                         {{--data-ad-format="auto"></ins>--}}
+                    {{--<script>--}}
+                        {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                    {{--</script>--}}
                     @foreach($articles as $article)
                         <div class="news-one col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <img class="pull-left" src="{{ asset("img/articles/{$article->image}") }}" alt="{{ $article->title }}" title="{{ $article->title }}"  />
@@ -93,20 +114,20 @@
                             <i class="fa fas fa-heart"> {{ $article->rate_count }}</i>
                         </span>
                             <div class="clearfix hidden-lg hidden-md hidden-sm"><br/></div>
-                            <a class="button-detail" href="{{ route('articleView', ['alias' => $article->alias, 'id' => $article->id]) }}">Читать далее</a>
+                            <a rel="nofollow" class="button-detail" href="{{ route('articleView', ['alias' => $article->alias, 'id' => $article->id]) }}">Читать далее</a>
                         </div>
                         <div class="clearfix"></div>
                         <hr />
                     @endforeach
-                <!-- rap-time reklama -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2586863288185463"
-                         data-ad-slot="2078150076"
-                         data-ad-format="auto"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                    {{--<!-- rap-time reklama -->--}}
+                    {{--<ins class="adsbygoogle"--}}
+                         {{--style="display:block"--}}
+                         {{--data-ad-client="ca-pub-2586863288185463"--}}
+                         {{--data-ad-slot="2078150076"--}}
+                         {{--data-ad-format="auto"></ins>--}}
+                    {{--<script>--}}
+                        {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                    {{--</script>--}}
                         <div class="clearfix"></div>
                         <div class="my-pagination">
                             {{  $articles->render() }}

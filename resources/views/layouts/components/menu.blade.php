@@ -41,22 +41,22 @@
                                 <a rel="nofollow" class="float-shadow" href="{{ route('home') }}">Главная</a>
                             </li>
                             <li>
-                                <a rel="nofollow" class="float-shadow" href="{{ route('newsIndex') }}">Новости</a>
+                                <a class="float-shadow" href="{{ route('newsIndex') }}">Новости</a>
                             </li>
                             <li>
-                                <a rel="nofollow" class="float-shadow" href="{{ route('artistIndex') }}">Исполнители</a>
+                                <a class="float-shadow" href="{{ route('artistIndex') }}">Исполнители</a>
                             </li>
                             <li>
-                                <a rel="nofollow" class="float-shadow" href="{{ route('albumIndex') }}">Альбомы</a>
+                                <a class="float-shadow" href="{{ route('albumIndex') }}">Альбомы</a>
                             </li>
                             <li>
-                                <a rel="nofollow" class="float-shadow" href="{{ route('lyricsIndex') }}">Тексты песен</a>
+                                <a class="float-shadow" href="{{ route('lyricsIndex') }}">Тексты песен</a>
                             </li>
                             <li>
-                                <a rel="nofollow" class="float-shadow" href="{{ route('interviewIndex') }}">Интервью</a>
+                                <a class="float-shadow" href="{{ route('interviewIndex') }}">Интервью</a>
                             </li>
                             <li>
-                                <a rel="nofollow" class="float-shadow" href="{{ route('articleIndex') }}">Статьи</a>
+                                <a class="float-shadow" href="{{ route('articleIndex') }}">Статьи</a>
                             </li>
                             @if(!Auth::check())
                             <li class="hidden-lg">
@@ -89,7 +89,7 @@
             <a href="{{ route('login') }}" data-toggle="modal" data-target="#modal-login" class="login-button" rel="nofollow">Вход</a>
             <a href="{{ route('register') }}" data-toggle="modal" data-target="#modal-register" class="register-button" rel="nofollow">Регистрация</a>
         @else
-            <a href="{{ route('profileIndex', ['id' => Auth::id()]) }}">Мой аккаунт</a>
+            <a rel="nofollow" href="{{ route('profileIndex', ['id' => Auth::id()]) }}">Мой аккаунт</a>
         @endif
     </div>
 </div>

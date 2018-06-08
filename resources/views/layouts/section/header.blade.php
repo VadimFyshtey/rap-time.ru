@@ -12,6 +12,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('img/ico/apple-icon-57x57.png') }}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('img/ico/apple-icon-60x60.png') }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('img/ico/apple-icon-72x72.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('img/ico/apple-icon-76x76.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('img/ico/apple-icon-114x114.png') }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('img/ico/apple-icon-120x120.png') }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('img/ico/apple-icon-120x120.png') }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('img/ico/apple-icon-144x144.png') }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('img/ico/apple-icon-152x152.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/ico/apple-icon-180x180.png') }}">
+    <meta name="yandex-verification" content="cd3c5428a6c76383" />
+    <meta name='wmail-verification' content='87c1a35decf30fda046abc2ce66d04ff' />
+
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <!--[if lt IE 9]>
     <script src="{{ asset('js/ie.js') }}" defer></script>
@@ -30,10 +43,8 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'UA-102624075-5');
     </script>
-    <meta name="yandex-verification" content="cd3c5428a6c76383" />
 </head>
 <body>
 <div id="load"></div>

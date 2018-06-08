@@ -1,18 +1,17 @@
 User-agent: *
+
 Disallow: /*?
 Disallow: /*&
 Disallow: /*=
 
-Disallow: *?
-Disallow: *&
-Disallow: *=
-
-Disallow: ?*
-Disallow: &*
-Disallow: =*
-
 Disallow: /admin
 Disallow: /admin/*
+Disallow: /auth
+Disallow: /auth/*
+Disallow: /register
+Disallow: /login
+Disallow: /password/reset
+
 
 Disallow: /app
 Disallow: /bootstrap
@@ -28,6 +27,7 @@ Disallow: /vendor
 Disallow: /public
 Disallow: /public/*
 Disallow: /img
+Disallow: /img/*
 
 Host: https://rap-time.ru/
 Sitemap: https://rap-time.ru/sitemap.xml

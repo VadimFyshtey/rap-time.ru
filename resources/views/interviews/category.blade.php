@@ -7,11 +7,32 @@
             <h1>Интервью рэперов</h1>
             <h6><b>Категория:</b> <i>{{ $category->title }}</i></h6>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="breadcrumb-block">
+                <div class="breadcrumb-block" itemscope="" itemtype="http://schema.org/BreadcrumbList">
                     <ol class="breadcrumb pull-left">
-                        <li><a href="{{ route('home') }}">Главная</a></li>
-                        <li><a href="{{ route('interviewIndex') }}">Интервью</a></li>
-                        <li class="active">{{ $category->title }}</li>
+                        <li>
+                            <span itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a itemprop="item" title="Главная" href="{{ route('home') }}">
+                                    <span itemprop="name">Главная</span>
+                                    <meta itemprop="position" content="1">
+                                </a>
+                            </span>
+                        </li>
+                        <li>
+                            <span itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a itemprop="item" title="Интервью" href="{{ route('interviewIndex') }}">
+                                    <span itemprop="name">Интервью</span>
+                                    <meta itemprop="position" content="2">
+                                </a>
+                            </span>
+                        </li>
+                        <li class="active">
+                            <span itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a rel="nofollow" itemprop="item" title="{{ $category->title }}">
+                                    <span itemprop="name">{{ $category->title }}</span>
+                                    <meta itemprop="position" content="3">
+                                </a>
+                            </span>
+                        </li>
                     </ol>
                     @include('layouts.components.sort')
                 </div>
@@ -39,7 +60,7 @@
                     <h3>Популярные интервью</h3>
                     @foreach($popularInterviews as $popular)
                         <h5>
-                            <a rel="nofollow" href="{{ route('interviewView', ['alias' => $popular->alias, 'id' => $popular->id]) }}"><?= mb_strimwidth($popular->title , 0, 45, "...") ?></a>
+                            <a href="{{ route('interviewView', ['alias' => $popular->alias, 'id' => $popular->id]) }}"><?= mb_strimwidth($popular->title , 0, 45, "...") ?></a>
                         </h5>
                         <a rel="nofollow" href="{{ route('interviewView', ['alias' => $popular->alias, 'id' => $popular->id]) }}">
                             <img src="{{ asset("img/interviews/{$popular->image}") }}" alt="{{ $popular->title }}" title="{{ $popular->title }}"  />
@@ -55,40 +76,40 @@
                 </div>
                 <div class="news-sidebar hidden-sm hidden-xs">
                     <h3>Реклама</h3>
-                    <br />
-                    <!-- rap-time reklama -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2586863288185463"
-                         data-ad-slot="2078150076"
-                         data-ad-format="auto"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                    <br />
-                    <!-- rap-time reklama -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2586863288185463"
-                         data-ad-slot="2078150076"
-                         data-ad-format="auto"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                    <br />
+                    {{--<br />--}}
+                    {{--<!-- rap-time reklama -->--}}
+                    {{--<ins class="adsbygoogle"--}}
+                         {{--style="display:block"--}}
+                         {{--data-ad-client="ca-pub-2586863288185463"--}}
+                         {{--data-ad-slot="2078150076"--}}
+                         {{--data-ad-format="auto"></ins>--}}
+                    {{--<script>--}}
+                        {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                    {{--</script>--}}
+                    {{--<br />--}}
+                    {{--<!-- rap-time reklama -->--}}
+                    {{--<ins class="adsbygoogle"--}}
+                         {{--style="display:block"--}}
+                         {{--data-ad-client="ca-pub-2586863288185463"--}}
+                         {{--data-ad-slot="2078150076"--}}
+                         {{--data-ad-format="auto"></ins>--}}
+                    {{--<script>--}}
+                        {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                    {{--</script>--}}
+                    {{--<br />--}}
                 </div>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                 <div class="news-all">
-                    <!-- rap-time reklama -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2586863288185463"
-                         data-ad-slot="2078150076"
-                         data-ad-format="auto"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                    {{--<!-- rap-time reklama -->--}}
+                    {{--<ins class="adsbygoogle"--}}
+                         {{--style="display:block"--}}
+                         {{--data-ad-client="ca-pub-2586863288185463"--}}
+                         {{--data-ad-slot="2078150076"--}}
+                         {{--data-ad-format="auto"></ins>--}}
+                    {{--<script>--}}
+                        {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                    {{--</script>--}}
                     @foreach($interviews as $interview)
                         <div class="news-one col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <img class="pull-left" src="{{ asset("img/interviews/{$interview->image}") }}" alt="{{ $interview->title }}" title="{{ $interview->title }}"  />
@@ -104,20 +125,20 @@
                             <i class="fa fas fa-heart"> {{ $interview->rate_count }}</i>
                         </span>
                             <div class="clearfix hidden-lg hidden-md hidden-sm"><br/></div>
-                            <a class="button-detail" href="{{ route('interviewView', ['alias' => $interview->alias, 'id' => $interview->id]) }}">Читать далее</a>
+                            <a rel="nofollow" class="button-detail" href="{{ route('interviewView', ['alias' => $interview->alias, 'id' => $interview->id]) }}">Читать далее</a>
                         </div>
                         <div class="clearfix"></div>
                         <hr />
                     @endforeach
-                    <!-- rap-time reklama -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2586863288185463"
-                         data-ad-slot="2078150076"
-                         data-ad-format="auto"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                    {{--<!-- rap-time reklama -->--}}
+                    {{--<ins class="adsbygoogle"--}}
+                         {{--style="display:block"--}}
+                         {{--data-ad-client="ca-pub-2586863288185463"--}}
+                         {{--data-ad-slot="2078150076"--}}
+                         {{--data-ad-format="auto"></ins>--}}
+                    {{--<script>--}}
+                        {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                    {{--</script>--}}
                         <div class="clearfix"></div>
                         <div class="my-pagination">
                             {{  $interviews->render() }}

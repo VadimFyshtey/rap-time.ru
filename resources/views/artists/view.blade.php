@@ -5,11 +5,34 @@
     <div class="container">
         <section class="artist-view">
             <div class="col-lg-12">
-                <ol class="breadcrumb pull-left">
-                    <li><a href="{{ route('home') }}">Главная</a></li>
-                    <li><a href="{{ route('artistIndex') }}">Исполнители</a></li>
-                    <li class="active">{{ $artist->nickname }}</li>
-                </ol>
+                <div itemscope="" itemtype="http://schema.org/BreadcrumbList">
+                    <ol class="breadcrumb pull-left">
+                        <li>
+                            <span itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a itemprop="item" title="Главная" href="{{ route('home') }}">
+                                    <span itemprop="name">Главная</span>
+                                    <meta itemprop="position" content="1">
+                                </a>
+                            </span>
+                        </li>
+                        <li>
+                            <span itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a itemprop="item" title="Исполнители" href="{{ route('artistIndex') }}">
+                                    <span itemprop="name">Исполнители</span>
+                                    <meta itemprop="position" content="2">
+                                </a>
+                            </span>
+                        </li>
+                        <li class="active">
+                            <span itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a rel="nofollow" itemprop="item" title="{{ $artist->nickname }}">
+                                    <span itemprop="name">{{ $artist->nickname }}</span>
+                                    <meta itemprop="position" content="3">
+                                </a>
+                            </span>
+                        </li>
+                    </ol>
+                </div>
                 <div class="clearfix"></div>
                 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 artist-view-block pull-left">
                     <h1>{{ $artist->nickname }}</h1>
@@ -99,28 +122,34 @@
                     @endif
                     <div class="clearfix"></div>
                     <h2>{{ $artist->nickname }} - биография</h2>
-                    <!-- rap-time reklama -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2586863288185463"
-                         data-ad-slot="2078150076"
-                         data-ad-format="auto"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                    <br />
+                    {{--<!-- rap-time reklama -->--}}
+                    {{--<ins class="adsbygoogle"--}}
+                         {{--style="display:block"--}}
+                         {{--data-ad-client="ca-pub-2586863288185463"--}}
+                         {{--data-ad-slot="2078150076"--}}
+                         {{--data-ad-format="auto"></ins>--}}
+                    {{--<script>--}}
+                        {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                    {{--</script>--}}
+                    {{--<br />--}}
                     <div class="full-content">
                         {!! $artist->biography !!}
                     </div>
-                    <!-- rap-time reklama -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2586863288185463"
-                         data-ad-slot="2078150076"
-                         data-ad-format="auto"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                    <br />
+                    <!-- uSocial -->
+                    <script async src="https://usocial.pro/usocial/usocial.js?v=6.1.4" data-script="usocial" charset="utf-8"></script>
+                    <div class="uSocial-Share" data-pid="77366e53d036665f56742ab6d31e844e" data-type="share" data-options="rect,style4,default,absolute,horizontal,size24,eachCounter0,counter0" data-social="vk,fb,twi,telegram,gPlus,ok,bookmarks" data-mobile="vi,wa,sms"></div>
+                    <!-- /uSocial -->
+                    <br />
+                    {{--<!-- rap-time reklama -->--}}
+                    {{--<ins class="adsbygoogle"--}}
+                         {{--style="display:block"--}}
+                         {{--data-ad-client="ca-pub-2586863288185463"--}}
+                         {{--data-ad-slot="2078150076"--}}
+                         {{--data-ad-format="auto"></ins>--}}
+                    {{--<script>--}}
+                        {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                    {{--</script>--}}
                     <br />
                     @if(Auth::check() && (Auth::user()->role_id === 1 || Auth::user()->role_id === 2))
                         <div class="clearfix"></div>
@@ -168,7 +197,7 @@
                 <div class="col-lg-12 col-md-12 com-sm-12 col-xs-12 artist-view-sidebar pull-right">
                     <h3>Последние альбомы</h3>
                     @foreach($artist->albums as $album)
-                        <a rel="nofollow"  href="{{ route('albumView', ['alias' => $album->alias, 'id' => $album->id]) }}">
+                        <a rel="nofollow" href="{{ route('albumView', ['alias' => $album->alias, 'id' => $album->id]) }}">
                             <img src="{{ asset("img/albums/{$album->image}") }}" title="{{ $album->artist_name }} - {{ $album->album_name }}" alt="{{ $album->artist_name }} - {{ $album->album_name }}"/>
                         </a>
                         <h4>
@@ -176,7 +205,7 @@
                         </h4>
                         <hr />
                     @endforeach
-                    <a class="all-album-button" rel="nofollow" href="{{ route('artistAlbums', ['alias' => $artist->alias]) }}">Все альбомы</a>
+                    <a class="all-album-button" href="{{ route('artistAlbums', ['alias' => $artist->alias]) }}">Все альбомы</a>
                 </div>
                     <div class="clearfix"></div>
                 @endif
@@ -218,7 +247,7 @@
                         <div class="clearfix"></div>
                         <hr />
                     @endforeach
-                    <a class="all-album-button" rel="nofollow" href="{{ route('artistNews', ['alias' => $artist->alias]) }}">Все новости</a>
+                    <a class="all-album-button" href="{{ route('artistNews', ['alias' => $artist->alias]) }}">Все новости</a>
                 </div>
                     <div class="clearfix"></div>
                 @endif
@@ -234,33 +263,33 @@
                         </h4>
                         <hr />
                     @endforeach
-                    <a class="all-album-button" rel="nofollow" href="{{ route('artistLyrics', ['alias' => $artist->alias]) }}">Все тексты песен</a>
+                    <a class="all-album-button" href="{{ route('artistLyrics', ['alias' => $artist->alias]) }}">Все тексты песен</a>
                 </div>
                     <div class="clearfix"></div>
                 @endif
                     <div class="col-lg-12 col-md-12 com-sm-12 col-xs-12 artist-view-sidebar artist-view-sidebar-article artist-view-sidebar-text pull-right">
                         <h3>Реклама</h3>
-                        <br />
-                        <!-- rap-time reklama -->
-                        <ins class="adsbygoogle"
-                             style="display:block"
-                             data-ad-client="ca-pub-2586863288185463"
-                             data-ad-slot="2078150076"
-                             data-ad-format="auto"></ins>
-                        <script>
-                            (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
-                        <br />
-                        <!-- rap-time reklama -->
-                        <ins class="adsbygoogle"
-                             style="display:block"
-                             data-ad-client="ca-pub-2586863288185463"
-                             data-ad-slot="2078150076"
-                             data-ad-format="auto"></ins>
-                        <script>
-                            (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
-                        <br />
+                        {{--<br />--}}
+                        {{--<!-- rap-time reklama -->--}}
+                        {{--<ins class="adsbygoogle"--}}
+                             {{--style="display:block"--}}
+                             {{--data-ad-client="ca-pub-2586863288185463"--}}
+                             {{--data-ad-slot="2078150076"--}}
+                             {{--data-ad-format="auto"></ins>--}}
+                        {{--<script>--}}
+                            {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                        {{--</script>--}}
+                        {{--<br />--}}
+                        {{--<!-- rap-time reklama -->--}}
+                        {{--<ins class="adsbygoogle"--}}
+                             {{--style="display:block"--}}
+                             {{--data-ad-client="ca-pub-2586863288185463"--}}
+                             {{--data-ad-slot="2078150076"--}}
+                             {{--data-ad-format="auto"></ins>--}}
+                        {{--<script>--}}
+                            {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                        {{--</script>--}}
+                        {{--<br />--}}
                     </div>
                 </div>
             </div>

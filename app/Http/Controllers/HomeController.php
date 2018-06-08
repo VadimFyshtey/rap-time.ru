@@ -86,7 +86,7 @@ class HomeController extends DefaultController
     {
 
         MetaTag::set('title', 'Rap-Time.ru | Информация о проекте');
-        MetaTag::set('description', 'Наш сайт полностью посвящен рэпу, в нас вы найдете биографии, альбомы, новости, тексты песен своих любимых реперов.');
+        MetaTag::set('description', 'Наш сайт полностью посвящен рэпу, в нас вы найдете биографии, альбомы, новости, тексты песен своих любимых реперов.  Информация о проекте');
 
         return view('layouts.components.project.info');
     }
@@ -94,7 +94,7 @@ class HomeController extends DefaultController
     public function contactPage()
     {
         MetaTag::set('title', 'Rap-Time.ru | Контакты');
-        MetaTag::set('description', 'Наш сайт полностью посвящен рэпу, в нас вы найдете биографии, альбомы, новости, тексты песен своих любимых реперов.');
+        MetaTag::set('description', 'Наш сайт полностью посвящен рэпу, в нас вы найдете биографии, альбомы, новости, тексты песен своих любимых реперов. Контакты');
 
         return view('layouts.components.project.contact');
     }
@@ -103,7 +103,7 @@ class HomeController extends DefaultController
     {
 
         MetaTag::set('title', 'Rap-Time.ru | Размещение рекламы');
-        MetaTag::set('description', 'Наш сайт полностью посвящен рэпу, в нас вы найдете биографии, альбомы, новости, тексты песен своих любимых реперов.');
+        MetaTag::set('description', 'Наш сайт полностью посвящен рэпу, в нас вы найдете биографии, альбомы, новости, тексты песен своих любимых реперов. Информация о размещение рекламы');
 
         return view('layouts.components.project.advertising');
     }
@@ -112,7 +112,7 @@ class HomeController extends DefaultController
     {
 
         MetaTag::set('title', 'Rap-Time.ru | Правообладателям');
-        MetaTag::set('description', 'Наш сайт полностью посвящен рэпу, в нас вы найдете биографии, альбомы, новости, тексты песен своих любимых реперов.');
+        MetaTag::set('description', 'Наш сайт полностью посвящен рэпу, в нас вы найдете биографии, альбомы, новости, тексты песен своих любимых реперов. Информация правообладателям');
 
         return view('layouts.components.project.copyright');
     }
@@ -120,7 +120,7 @@ class HomeController extends DefaultController
     public function by88()
     {
         MetaTag::set('title', 'Rap-Time.ru | Embit88');
-        MetaTag::set('description', 'Наш сайт полностью посвящен рэпу, в нас вы найдете биографии, альбомы, новости, тексты песен своих любимых реперов.');
+        MetaTag::set('description', 'Наш сайт полностью посвящен рэпу, в нас вы найдете биографии, альбомы, новости, тексты песен своих любимых реперов. Информация о Embit88');
 
         return view('layouts.components.project.by88');
     }

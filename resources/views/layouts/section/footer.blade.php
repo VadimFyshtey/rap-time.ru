@@ -31,7 +31,7 @@
                         <li>Вход</li>
                     </a>
                 @else
-                    <a href="{{ route('profileIndex', ['id' => Auth::id()]) }}">
+                    <a rel="nofollow" href="{{ route('profileIndex', ['id' => Auth::id()]) }}">
                         <li>Мой аккаунт</li>
                     </a>
                 @endif
@@ -48,7 +48,7 @@
         </div>
     </div>
     <section class="bottom-footer">
-        <p>2018 - {{ date('Y') }} <a href="{{ route('home') }}">rap-time.ru</a> by <a href="{{ route('embit88') }}" rel="nofollow">Embit88</a></p>
+        <p>2018 - {{ date('Y') }} <a rel="nofollow" href="{{ route('home') }}">rap-time.ru</a> by <a href="{{ route('embit88') }}" rel="nofollow">Embit88</a></p>
     </section>
 </footer>
 </body>

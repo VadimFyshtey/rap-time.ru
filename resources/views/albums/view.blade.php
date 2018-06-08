@@ -5,11 +5,34 @@
     <div class="container">
         <section class="news-view">
             <div class="col-lg-12">
-                <ol class="breadcrumb pull-left">
-                    <li><a href="{{ route('home') }}">Главная</a></li>
-                    <li><a href="{{ route('albumIndex') }}">Альбомы</a></li>
-                    <li class="active">{{ $album->artist_name }} - {{ $album->album_name }}</li>
-                </ol>
+                <div itemscope="" itemtype="http://schema.org/BreadcrumbList">
+                    <ol class="breadcrumb pull-left">
+                        <li>
+                            <span itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a itemprop="item" title="Главная" href="{{ route('home') }}">
+                                    <span itemprop="name">Главная</span>
+                                    <meta itemprop="position" content="1">
+                                </a>
+                            </span>
+                        </li>
+                        <li>
+                            <span itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a itemprop="item" title="Альбомы" href="{{ route('albumIndex') }}">
+                                    <span itemprop="name">Альбомы</span>
+                                    <meta itemprop="position" content="2">
+                                </a>
+                            </span>
+                        </li>
+                        <li class="active">
+                            <span itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a rel="nofollow" itemprop="item" title="{{ $album->artist_name }} - {{ $album->album_name }}">
+                                    <span itemprop="name">{{ $album->artist_name }} - {{ $album->album_name }}</span>
+                                    <meta itemprop="position" content="3">
+                                </a>
+                            </span>
+                        </li>
+                    </ol>
+                </div>
                 <div class="clearfix"></div>
                 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 news-view-block">
                     <h1>{{ $album->artist_name }} - {{ $album->album_name }}</h1>
@@ -49,16 +72,16 @@
                         </span>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 full-content">
-                        <!-- rap-time reklama -->
-                        <ins class="adsbygoogle"
-                             style="display:block"
-                             data-ad-client="ca-pub-2586863288185463"
-                             data-ad-slot="2078150076"
-                             data-ad-format="auto"></ins>
-                        <script>
-                            (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
-                        <br />
+                        {{--<!-- rap-time reklama -->--}}
+                        {{--<ins class="adsbygoogle"--}}
+                             {{--style="display:block"--}}
+                             {{--data-ad-client="ca-pub-2586863288185463"--}}
+                             {{--data-ad-slot="2078150076"--}}
+                             {{--data-ad-format="auto"></ins>--}}
+                        {{--<script>--}}
+                            {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                        {{--</script>--}}
+                        {{--<br />--}}
                         {!! $album->full_content !!}
                     </div>
                     <div class="clearfix"></div>
@@ -72,16 +95,21 @@
                             <a href="{{ $album->link_second }}" class="button-save" rel="nofollow" target="_blank">Скачать #2</a>
                         @endif
                         <div class="clearfix"></div>
+                        <!-- uSocial -->
+                        <script async src="https://usocial.pro/usocial/usocial.js?v=6.1.4" data-script="usocial" charset="utf-8"></script>
+                        <div class="uSocial-Share" data-pid="77366e53d036665f56742ab6d31e844e" data-type="share" data-options="rect,style4,default,absolute,horizontal,size24,eachCounter0,counter0" data-social="vk,fb,twi,telegram,gPlus,ok,bookmarks" data-mobile="vi,wa,sms"></div>
+                        <!-- /uSocial -->
                     </div>
-                    <!-- rap-time reklama -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2586863288185463"
-                         data-ad-slot="2078150076"
-                         data-ad-format="auto"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                    {{--<!-- rap-time reklama -->--}}
+                    {{--<ins class="adsbygoogle"--}}
+                         {{--style="display:block"--}}
+                         {{--data-ad-client="ca-pub-2586863288185463"--}}
+                         {{--data-ad-slot="2078150076"--}}
+                         {{--data-ad-format="auto"></ins>--}}
+                    {{--<script>--}}
+                        {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                    {{--</script>--}}
+                    {{--<hr />--}}
                     <hr />
                     <div class="other-item">
                         <p>Возможно Вам будет интересно:</p>
@@ -164,27 +192,27 @@
                     <div class="clearfix"></div>
                     <div class="col-lg-12 col-md-12 news-view-sidebar hidden-sm hidden-xs pull-right">
                         <h3>Реклама</h3>
-                        <br />
-                        <!-- rap-time reklama -->
-                        <ins class="adsbygoogle"
-                             style="display:block"
-                             data-ad-client="ca-pub-2586863288185463"
-                             data-ad-slot="2078150076"
-                             data-ad-format="auto"></ins>
-                        <script>
-                            (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
-                        <br />
-                        <!-- rap-time reklama -->
-                        <ins class="adsbygoogle"
-                             style="display:block"
-                             data-ad-client="ca-pub-2586863288185463"
-                             data-ad-slot="2078150076"
-                             data-ad-format="auto"></ins>
-                        <script>
-                            (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
-                        <br />
+                        {{--<br />--}}
+                        {{--<!-- rap-time reklama -->--}}
+                        {{--<ins class="adsbygoogle"--}}
+                             {{--style="display:block"--}}
+                             {{--data-ad-client="ca-pub-2586863288185463"--}}
+                             {{--data-ad-slot="2078150076"--}}
+                             {{--data-ad-format="auto"></ins>--}}
+                        {{--<script>--}}
+                            {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                        {{--</script>--}}
+                        {{--<br />--}}
+                        {{--<!-- rap-time reklama -->--}}
+                        {{--<ins class="adsbygoogle"--}}
+                             {{--style="display:block"--}}
+                             {{--data-ad-client="ca-pub-2586863288185463"--}}
+                             {{--data-ad-slot="2078150076"--}}
+                             {{--data-ad-format="auto"></ins>--}}
+                        {{--<script>--}}
+                            {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                        {{--</script>--}}
+                        {{--<br />--}}
                     </div>
                 </div>
             </div>
